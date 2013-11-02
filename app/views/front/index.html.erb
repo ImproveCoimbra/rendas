@@ -1,0 +1,70 @@
+<div id="home">
+
+  <div class="page-header">
+    <h1>Quanto pagas de renda?</h1>
+  </div>
+
+  <form action="submit" method="post">
+
+    <% if @rent.errors.any? %>
+      <div class="errors">
+        <% for error in @rent.errors.full_messages %>
+          <p><%= error %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <p>
+      <input type="text" placeholder="350" name="rent[price]" value="<%= @rent.price %>" maxlength="5" size="5" /> €
+    </p>
+
+    <p>
+      <input type="text" name="rent[postal_code][0]" placeholder="1234" value="<%= @rent.postal_code_array[0] %>" maxlength="4" size="4" />
+      -
+      <input type="text" name="rent[postal_code][1]" placeholder="567" value="<%= @rent.postal_code_array[1] %>" maxlength="3" size="3" />
+    </p>
+
+    <p>
+      Tipologia
+      <select name="rent[typology]">
+        <% for typology in Rent::TYPOLOGIES %>
+          <option <% if @rent.typology == typology %>selected="selected"<% end %>><%= typology %></option>
+        <% end %>
+      </select>
+    </p>
+
+    <p>
+      <input type="submit" value="Enviar" class="btn btn-lg btn-success" />
+    </p>
+
+  </form>
+
+  <h2>Rendas</h2>
+
+  <table class="table">
+    <% for rent in @rents %>
+      <tr>
+        <td><%= rent.price %>€</td>
+        <td><%= rent.postal_code %></td>
+        <td><%= rent.typology %></td>
+        <td><%= rent.address %></td>
+        <td><%= rent.county %></td>
+        <td><%= rent.lat %>, <%= rent.lng %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= gmaps(
+      :markers => {
+        :data => @rents.to_gmaps4rails,
+      },
+      :map_options => {
+        :container_class => 'map-container',
+        :language => 'pt', :hl => 'pt', :region => 'pt',
+        :center_latitude => 40.20119879996395,
+        :center_longitude => -8.426894545555115,
+        :zoom => 13
+      }
+  ) %>
+
+</div>

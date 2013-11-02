@@ -1,0 +1,46 @@
+<h1>Listing Postal Codes</h1>
+
+<%= gmaps(
+  :markers => {
+    :data => @postal_codes.to_gmaps4rails,
+  },
+  :map_options => {
+    :container_class => 'map-container',
+    :language => 'pt', :hl => 'pt', :region => 'pt',
+    :center_latitude => 40.20119879996395,
+    :center_longitude => -8.426894545555115,
+    :zoom => 13
+  }
+) %>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Address</th>
+    <th>County</th>
+    <th>Lat</th>
+    <th>Lng</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @postal_codes.each do |postal_code| %>
+  <tr>
+    <td><%= postal_code.code %></td>
+    <td><%= postal_code.address %></td>
+    <td><%= postal_code.county %></td>
+    <td><%= postal_code.lat %></td>
+    <td><%= postal_code.lng %></td>
+    <td><%= link_to 'Show', postal_code %></td>
+    <td><%= link_to 'Edit', edit_postal_code_path(postal_code) %></td>
+    <td><%= link_to 'Find GEO', find_geo_postal_code_path(postal_code), :method => :post %></td>
+    <td><%= link_to 'Destroy', postal_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Postal code', new_postal_code_path %>

@@ -1,0 +1,35 @@
+<h1>Listing rents</h1>
+
+<table>
+  <tr>
+    <th>Price</th>
+    <th>Postal code</th>
+    <th>Address</th>
+    <th>County</th>
+    <th>Lat</th>
+    <th>Lng</th>
+    <th>Typology</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rents.each do |rent| %>
+  <tr>
+    <td><%= rent.price %></td>
+    <td><%= rent.postal_code %></td>
+    <td><%= rent.address %></td>
+    <td><%= rent.county %></td>
+    <td><%= rent.lat %></td>
+    <td><%= rent.lng %></td>
+    <td><%= rent.typology %></td>
+    <td><%= link_to 'Show', rent %></td>
+    <td><%= link_to 'Edit', edit_rent_path(rent) %></td>
+    <td><%= link_to 'Destroy', rent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rent', new_rent_path %>

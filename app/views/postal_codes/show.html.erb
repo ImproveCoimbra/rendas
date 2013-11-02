@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @postal_code.code %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @postal_code.address %>
+</p>
+
+<p>
+  <b>County:</b>
+  <%= @postal_code.county %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%= @postal_code.lat %>
+</p>
+
+<p>
+  <b>Lng:</b>
+  <%= @postal_code.lng %>
+</p>
+
+
+<%= link_to 'Edit', edit_postal_code_path(@postal_code) %> |
+<%= link_to 'Find GEO', find_geo_postal_code_path(@postal_code), :method => :post %> |
+<%= link_to 'Back', postal_codes_path %>

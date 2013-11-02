@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Price:</b>
+  <%= @rent.price %>
+</p>
+
+<p>
+  <b>Postal code:</b>
+  <%= @rent.postal_code %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @rent.address %>
+</p>
+
+<p>
+  <b>County:</b>
+  <%= @rent.county %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%= @rent.lat %>
+</p>
+
+<p>
+  <b>Lng:</b>
+  <%= @rent.lng %>
+</p>
+
+<p>
+  <b>Typology:</b>
+  <%= @rent.typology %>
+</p>
+
+
+<%= link_to 'Edit', edit_rent_path(@rent) %> |
+<%= link_to 'Back', rents_path %>
