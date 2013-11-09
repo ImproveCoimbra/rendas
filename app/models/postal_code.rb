@@ -8,6 +8,8 @@ class PostalCode
   field :lat, :type => Float
   field :lng, :type => Float
 
+  has_many :rents
+
   index({:code => 1}, {:background => true})
 
   alias :latitude  :lat
@@ -16,8 +18,12 @@ class PostalCode
   # Gmaps4Rails
   acts_as_gmappable :process_geocoding => false
 
+  def to_s
+    code
+  end
+
   def gmaps4rails_infowindow
-    code + " " + county + "<br/>" + address
+    code + " " + county + "<br/>" + address + "<br/> <a href=\"/postal_codes/#{id}\">Open</a>"
   end
 
   def has_geo_location?
@@ -29,7 +35,7 @@ class PostalCode
   end
 
   def find_geo_location
-    results = Geocoder.search(full_address)
+    results = Geocoder.search(full_address, :region => 'pt', :components => "country:PT|postal_code:#{code}|locality:Coimbra")
     if results.any?
       result = results.first
       self[:lat] = result.latitude

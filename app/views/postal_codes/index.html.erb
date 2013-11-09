@@ -5,7 +5,7 @@
     :data => @postal_codes.to_gmaps4rails,
   },
   :map_options => {
-    :container_class => 'map-container',
+    :container_class => 'map-container grid-6',
     :language => 'pt', :hl => 'pt', :region => 'pt',
     :center_latitude => 40.20119879996395,
     :center_longitude => -8.426894545555115,
@@ -13,7 +13,7 @@
   }
 ) %>
 
-<table>
+<table class="table table-condensed">
   <tr>
     <th>Code</th>
     <th>Address</th>

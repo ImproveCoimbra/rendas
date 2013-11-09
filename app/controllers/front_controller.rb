@@ -6,8 +6,9 @@ class FrontController < ApplicationController
   end
 
   def submit
-    params[:rent][:postal_code] = params[:rent][:postal_code].values.join('-') if params[:rent]
+    code = params[:rent].delete(:postal_code).values.join('-') if params[:rent] and params[:rent][:postal_code]
     @rent = Rent.new(params[:rent])
+    @rent.postal_code = PostalCode.where(:code => code).first
     if @rent.save
       redirect_to :action => :index
     else

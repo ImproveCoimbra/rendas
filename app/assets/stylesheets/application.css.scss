@@ -8,6 +8,23 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require_tree ./lib
  *= require_self
  *= require_tree .
  */
+
+.container {
+  max-width: 50em;
+}
+
+#map {
+  height: 400px;
+
+  img {
+    max-width: none;
+  }
+
+  label {
+    width: auto; display:inline;
+  }
+}

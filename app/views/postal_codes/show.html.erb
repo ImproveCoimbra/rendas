@@ -1,27 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Code:</b>
+  <strong>Code:</strong>
   <%= @postal_code.code %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <strong>Address:</strong>
   <%= @postal_code.address %>
 </p>
 
 <p>
-  <b>County:</b>
+  <strong>County:</strong>
   <%= @postal_code.county %>
 </p>
 
 <p>
-  <b>Lat:</b>
+  <strong>Lat:</strong>
   <%= @postal_code.lat %>
 </p>
 
 <p>
-  <b>Lng:</b>
+  <strong>Lng:</strong>
   <%= @postal_code.lng %>
 </p>
 
@@ -29,3 +29,16 @@
 <%= link_to 'Edit', edit_postal_code_path(@postal_code) %> |
 <%= link_to 'Find GEO', find_geo_postal_code_path(@postal_code), :method => :post %> |
 <%= link_to 'Back', postal_codes_path %>
+
+<%= gmaps(
+  :markers => {
+    :data => @postal_code.to_gmaps4rails,
+  },
+  :map_options => {
+    :container_class => 'map-container grid-6',
+    :language => 'pt', :hl => 'pt', :region => 'pt',
+    :center_latitude => 40.20119879996395,
+    :center_longitude => -8.426894545555115,
+    :zoom => 13
+  }
+) %>

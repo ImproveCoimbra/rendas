@@ -15,18 +15,18 @@
     <% end %>
 
     <p>
-      <input type="text" placeholder="350" name="rent[price]" value="<%= @rent.price %>" maxlength="5" size="5" /> €
+      <input type="text" class="input-inline" placeholder="350" name="rent[price]" value="<%= @rent.price %>" maxlength="5" size="5" /> €
     </p>
 
     <p>
-      <input type="text" name="rent[postal_code][0]" placeholder="1234" value="<%= @rent.postal_code_array[0] %>" maxlength="4" size="4" />
+      <input type="text" class="input-inline" name="rent[postal_code][0]" placeholder="1234" value="<%= @rent.postal_code_array[0] %>" maxlength="4" size="4" />
       -
-      <input type="text" name="rent[postal_code][1]" placeholder="567" value="<%= @rent.postal_code_array[1] %>" maxlength="3" size="3" />
+      <input type="text" class="input-inline" name="rent[postal_code][1]" placeholder="567" value="<%= @rent.postal_code_array[1] %>" maxlength="3" size="3" />
     </p>
 
     <p>
       Tipologia
-      <select name="rent[typology]">
+      <select name="rent[typology]" class="input-inline">
         <% for typology in Rent::TYPOLOGIES %>
           <option <% if @rent.typology == typology %>selected="selected"<% end %>><%= typology %></option>
         <% end %>
@@ -34,10 +34,12 @@
     </p>
 
     <p>
-      <input type="submit" value="Enviar" class="btn btn-lg btn-success" />
+      <input type="submit" value="Enviar" class="btn btn-block btn-large btn-blue" />
     </p>
 
   </form>
+
+  <hr>
 
   <h2>Rendas</h2>
 
@@ -54,12 +56,14 @@
     <% end %>
   </table>
 
+  <hr>
+
   <%= gmaps(
       :markers => {
         :data => @rents.to_gmaps4rails,
       },
       :map_options => {
-        :container_class => 'map-container',
+        :container_class => 'map-container grid-6',
         :language => 'pt', :hl => 'pt', :region => 'pt',
         :center_latitude => 40.20119879996395,
         :center_longitude => -8.426894545555115,

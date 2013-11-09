@@ -15,6 +15,7 @@ gem 'mongoid', '3.1.5'
 gem 'unicorn', :platform => :ruby
 
 group :development do
+  gem 'thin'
   gem 'rb-readline', '~> 0.4.2'
 end
 

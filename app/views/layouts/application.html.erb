@@ -2,22 +2,15 @@
 <html>
 <head>
   <title>Rendas</title>
-
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
   <%= csrf_meta_tags %>
 </head>
 <body>
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="grid-6">
         <%= yield %>
       </div>
     </div>
