@@ -31,14 +31,14 @@ end
 
 task :fix_postal_codes => :environment do
 
-  base_lat = 40.2184851
-  base_lng = -8.429770699999999
+  base_lat = 40.2023788
+  base_lng = -8.447156
 
   far_postal_codes = []
 
   PostalCode.all.each do |postal_code|
     distance_to_base = Math.sqrt((postal_code.lat - base_lat)**2 + (postal_code.lng - base_lng)**2)
-    far_postal_codes << postal_code if distance_to_base > 0.05
+    far_postal_codes << postal_code if distance_to_base < 0.0001
   end
 
   puts "Recalculating GEO for #{far_postal_codes.size} postal codes"
