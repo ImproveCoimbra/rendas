@@ -85,9 +85,9 @@ class RentsController < ApplicationController
 
   def export
     output = CSV.generate do |csv|
-      csv << %w{codigopostal preco tipologia}
+      csv << %w{codigopostal preco tipologia latitude longitude}
       Rent.all.each do |rent|
-        csv << [rent.code, rent.price, rent.typology]
+        csv << [rent.code, rent.price, rent.typology, rent.lat, rent.lng]
       end
     end
     send_data(output,

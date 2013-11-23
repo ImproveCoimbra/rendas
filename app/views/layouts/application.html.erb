@@ -8,22 +8,44 @@
 </head>
 <body>
 
-  <div class="container">
-    <div class="row">
-      <div class="grid-6">
-
-        <div class="page-header">
-          <h1><a href="/">Quanto pagas de renda?</a></h1>
+  <div id="header">
+    <div id="header-title">
+      <div class="container">
+        <div class="row">
+          <div class="grid-third">
+            <h1>
+              <a href="/">Quanto pagas de renda?</a>
+            </h1>
+          </div>
+          <div class="grid-two-thirds">
+            <div id="navigation">
+              <%= link_to 'Home', '/' %>&nbsp;&nbsp;
+              <%= link_to 'Sobre', about_path %>&nbsp;&nbsp;
+              <%= link_to 'Exportar dados', export_rents_path(:format => 'csv') %>&nbsp;&nbsp;
+              <%= link_to 'Contacto', 'mailto:info@improvecoimbra.org' %>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <%= yield :header_contents %>
+      </div>
+    </div>
+  </div>
 
-        <p>
-          <%= link_to 'Sobre', about_path %> |
-          <%= link_to 'Exportar dados', export_rents_path(:format => 'csv') %> |
-          <%= link_to 'Made in Improve Coimbra', 'http://improvecoimbra.org' %>
-        </p>
+  <div id="contents">
+    <%= yield %>
+  </div>
 
-        <%= yield %>
-
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="grid-6">
+            <%= link_to 'Made in Improve Coimbra', 'http://improvecoimbra.org' %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

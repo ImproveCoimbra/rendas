@@ -13,8 +13,26 @@
  *= require_tree .
  */
 
-.container {
-  max-width: 50em;
+#header {
+  background-image: url('<%= asset_path 'header_background.jpg' %>');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  #header-title {
+    padding: 2em 0;
+    background: rgba(222,222,222,0.5);
+    .container {
+      margin-top: 0;
+      position: relative;
+    }
+  }
+
+  #navigation {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: right;
+  }
 }
 
 #map {
@@ -27,4 +45,9 @@
   label {
     width: auto; display:inline;
   }
+}
+
+#footer {
+  padding: 2em 0;
+  text-align: center;
 }
