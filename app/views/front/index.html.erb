@@ -81,6 +81,12 @@
 
   <hr>
 
+  <div id="typologyChart">
+    <svg></svg>
+  </div>
+
+  <hr>
+
   <%= gmaps(
       :markers => {
         :data => @rents.to_gmaps4rails,
