@@ -72,6 +72,35 @@
   </div>
 </div>
 
+<script>
+  (function () {
+    "use strict";
+
+    window.app = {};
+
+    app.TYPOLOGIES = {
+      QUARTO: "Quarto",
+      T0: "T0",
+      T1: "T1",
+      T2: "T2",
+      T3: "T3",
+      T4P: "T4+",
+    };
+
+    app.rentsByTipology = {};
+    app.rentsByTipology[app.TYPOLOGIES.QUARTO] = <%= Rent.median("Quarto") || "null" %>;
+    app.rentsByTipology[app.TYPOLOGIES.T0] = <%= Rent.median("T0") || "null" %>;
+    app.rentsByTipology[app.TYPOLOGIES.T1] = <%= Rent.median("T1") || "null" %>;
+    app.rentsByTipology[app.TYPOLOGIES.T2] = <%= Rent.median("T2") || "null" %>;
+    app.rentsByTipology[app.TYPOLOGIES.T3] = <%= Rent.median("T3") || "null" %>;
+    app.rentsByTipology[app.TYPOLOGIES.T4P] = <%= Rent.median("T4+") || "null" %>;
+  }());
+</script>
+
+<div id="typologyChart">
+  <svg class="typologyChart"></svg>
+</div>
+
 <%= gmaps(
     :markers => {
       :data => @rents.to_gmaps4rails,

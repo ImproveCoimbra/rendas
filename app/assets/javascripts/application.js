@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require nvd3/d3.v3
+//= require nvd3/nv.d3
+//= require underscore
 //= require_tree .

@@ -1,0 +1,4 @@
+.typologyChart .nvd3 .nv-x.nv-axis line {
+  stroke: none;
+  fill: none;
+}

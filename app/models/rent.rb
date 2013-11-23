@@ -28,6 +28,16 @@ class Rent
     (self[:price].to_f / 100).round(2) if self[:price]
   end
 
+  def self.median(typology)
+    prices = where(:typology => typology).map(&:price)
+
+    return nil if prices.empty?
+
+    sorted = prices.sort
+    len = sorted.length
+    ((sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0).round(2)
+  end
+
   def price=(new_price)
     price_will_change!
     self[:price] = (new_price.to_f * 100).to_i
