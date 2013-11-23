@@ -8,14 +8,14 @@
 
     <% if @rent.errors.any? %>
       <div class="errors">
-        <% for error in @rent.errors.full_messages %>
-          <p><%= error %></p>
+        <% for error in @rent.errors.values %>
+          <p><%= error.first %></p>
         <% end %>
       </div>
     <% end %>
 
     <p>
-      <input type="text" class="input-inline" placeholder="350" name="rent[price]" value="<%= @rent.price %>" maxlength="5" size="5" /> €
+      <input type="text" class="input-inline" placeholder="350" name="rent[price]" value="<%= @rent.price %>" maxlength="6" size="6" /> €
     </p>
 
     <p>
@@ -46,7 +46,7 @@
   <table class="table">
     <% for rent in @rents %>
       <tr>
-        <td><%= rent.price %>€</td>
+        <td><%= "%i" % rent.price %>€</td>
         <td><%= rent.postal_code %></td>
         <td><%= rent.typology %></td>
         <td><%= rent.address %></td>

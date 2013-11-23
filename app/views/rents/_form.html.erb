@@ -11,29 +11,10 @@
     </div>
   <% end %>
 
+  <p><b>Postal code:</b> <%= @rent.postal_code %></p>
   <div class="field">
     <%= f.label :price %><br />
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :county %><br />
-    <%= f.text_field :county %>
-  </div>
-  <div class="field">
-    <%= f.label :lat %><br />
-    <%= f.text_field :lat %>
-  </div>
-  <div class="field">
-    <%= f.label :lng %><br />
-    <%= f.text_field :lng %>
+    <%= f.text_field :price %>
   </div>
   <div class="field">
     <%= f.label :typology %><br />

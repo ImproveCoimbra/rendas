@@ -1,4 +1,6 @@
 class RentsController < ApplicationController
+  http_basic_authenticate_with :name => CONFIG['admin_username'], :password => CONFIG['admin_password'], :except => :export
+
   # GET /rents
   # GET /rents.json
   def index
@@ -80,4 +82,15 @@ class RentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def export
+    output = CSV.generate do |csv|
+      csv << %w{codigopostal preco tipologia}
+      Rent.all.each do |rent|
+        csv << [rent.code, rent.price, rent.typology]
+      end
+    end
+    render :text => output, :content_type => 'text/csv'
+  end
+
 end

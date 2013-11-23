@@ -1,4 +1,6 @@
 class PostalCodesController < ApplicationController
+  http_basic_authenticate_with name: CONFIG['admin_username'], password: CONFIG['admin_password']
+
   # GET /postal_codes
   # GET /postal_codes.json
   def index

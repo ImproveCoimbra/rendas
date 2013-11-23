@@ -16,7 +16,7 @@
 
 <% @rents.each do |rent| %>
   <tr>
-    <td><%= rent.price %></td>
+    <td><%= "%.2f" % rent.price %></td>
     <td><%= rent.postal_code %></td>
     <td><%= rent.address %></td>
     <td><%= rent.county %></td>

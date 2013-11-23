@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class Rent
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -8,9 +10,11 @@ class Rent
 
   TYPOLOGIES = %w{Quarto T0 T1 T2 T3 T4+}
 
-  validates :price, :presence => true
-  validates :postal_code, :presence => true
-  validates :typology, :presence => true, :inclusion => { :in => TYPOLOGIES, :allow_blank => true }
+  validates :price, :presence => { :message => 'Preço inválido' },
+                    :numericality => { :only_integer => true, :greater_than => 50, :less_than => 20000, :message => 'Preço inválido' }
+  validates :postal_code, :presence => { :message => 'Código-postal de Coimbra inválido' }
+  validates :typology, :presence => { :message => 'Tipologia inválida' },
+                       :inclusion => { :in => TYPOLOGIES, :allow_blank => true, :message => 'Tipologia inválida' }
 
   belongs_to :postal_code
 
@@ -20,6 +24,15 @@ class Rent
 
   # Gmaps4Rails
   acts_as_gmappable :process_geocoding => false
+
+  def price
+    (self[:price].to_f / 100).round(2) if self[:price]
+  end
+
+  def price=(new_price)
+    price_will_change!
+    self[:price] = (new_price.to_f * 100).to_i
+  end
 
   def postal_code_array
     if postal_code
