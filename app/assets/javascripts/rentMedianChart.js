@@ -44,6 +44,10 @@
     });
     chart.xAxis.axisLabel("Rendas (€)");
 
+    chart.tooltipContent(function(key) {
+        return '<h2>' + key + '</h2>';
+    });
+
     d3.select('#rentMedianChart svg')
         .datum(data)
         .call(chart);
