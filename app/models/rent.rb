@@ -11,7 +11,7 @@ class Rent
   TYPOLOGIES = %w{Quarto T0 T1 T2 T3 T4+}
 
   validates :price, :presence => { :message => 'Preço inválido' },
-                    :numericality => { :only_integer => true, :greater_than => 50, :less_than => 20000, :message => 'Preço inválido' }
+                    :numericality => { :only_integer => true, :greater_than => 5000, :less_than => 2000000, :message => 'Preço inválido' }
   validates :postal_code, :presence => { :message => 'Código-postal de Coimbra inválido' }
   validates :typology, :presence => { :message => 'Tipologia inválida' },
                        :inclusion => { :in => TYPOLOGIES, :allow_blank => true, :message => 'Tipologia inválida' }
