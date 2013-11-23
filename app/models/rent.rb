@@ -5,7 +5,6 @@ class Rent
   include Mongoid::Timestamps
 
   field :price, :type => Integer
-  field :postal_code
   field :typology
 
   TYPOLOGIES = %w{Quarto T0 T1 T2 T3 T4+}
@@ -46,14 +45,14 @@ class Rent
 
   def postal_code_array
     if postal_code
-      postal_code.split('-')
+      code.split('-')
     else
       [nil,nil]
     end
   end
 
   def gmaps4rails_infowindow
-    "#{price}&euro; (#{typology})"
+    "%i&euro; (%s)<br/>%s<br/>%s" % [price, typology, address, code]
   end
 
 end

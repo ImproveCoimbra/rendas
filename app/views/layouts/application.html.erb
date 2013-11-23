@@ -10,7 +10,19 @@
   <div class="container">
     <div class="row">
       <div class="grid-6">
+
+        <div class="page-header">
+          <h1>Quanto pagas de renda?</h1>
+        </div>
+
+        <p>
+          <%= link_to 'Sobre', about_path %> |
+          <%= link_to 'Export', export_rents_path %> |
+          <%= link_to 'Made in Improve Coimbra', 'http://improvecoimbra.org' %>
+        </p>
+
         <%= yield %>
+
       </div>
     </div>
   </div>

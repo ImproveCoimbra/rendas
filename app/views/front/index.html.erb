@@ -1,10 +1,6 @@
 <div id="home">
 
-  <div class="page-header">
-    <h1>Quanto pagas de renda?</h1>
-  </div>
-
-  <form action="submit" method="post">
+  <form action="<%= submit_path %>" method="post">
 
     <% if @rent.errors.any? %>
       <div class="errors">
@@ -15,7 +11,7 @@
     <% end %>
 
     <p>
-      <input type="text" class="input-inline" placeholder="350" name="rent[price]" value="<%= @rent.price %>" maxlength="6" size="6" /> €
+      <input type="text" class="input-inline" placeholder="350" name="rent[price]" value="<%= "%.2f" % @rent.price if @rent.price and @rent.price > 0 %>" maxlength="6" size="6" /> €
     </p>
 
     <p>
