@@ -13,12 +13,12 @@
       <div class="grid-6">
 
         <div class="page-header">
-          <h1>Quanto pagas de renda?</h1>
+          <h1><a href="/">Quanto pagas de renda?</a></h1>
         </div>
 
         <p>
           <%= link_to 'Sobre', about_path %> |
-          <%= link_to 'Export', export_rents_path %> |
+          <%= link_to 'Exportar dados', export_rents_path(:format => 'csv') %> |
           <%= link_to 'Made in Improve Coimbra', 'http://improvecoimbra.org' %>
         </p>
 
