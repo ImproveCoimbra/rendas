@@ -6,6 +6,25 @@
 
 <p><%= @rent.address %></p>
 
+  <script>
+    (function () {
+      "use strict";
+
+      window.app = {};
+
+      app.TYPOLOGIES = {
+        QUARTO: "Quarto",
+        T0: "T0",
+        T1: "T1",
+        T2: "T2",
+        T3: "T3",
+        T4P: "T4+",
+      };
+
+      app.PAGE = "RESULT";
+    }());
+  </script>
+
 <%= gmaps(
   :markers => {
     :data => @rent.to_gmaps4rails,

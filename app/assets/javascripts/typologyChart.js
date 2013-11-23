@@ -1,8 +1,12 @@
 /*jslint indent: 2*/
-/*globals app, _, nv, d3*/
+/*globals app, _, nv, d3, window*/
 
 (function () {
   "use strict";
+
+  if (!_.isObject(window.app) || window.app.PAGE !== "HOME") {
+    return;
+  }
 
   /*Constants*/
   var DEFAULT_COLOR = "#8e8eff";
