@@ -15,12 +15,12 @@
   }];
 
   data[0].values.push({
-    x: 300,
+    x: app.rentPrice,
     y: 0
   });
 
   data[1].values.push({
-    x: 450,
+    x: app.typologyMedian,
     y: 0
   });
 
@@ -39,7 +39,9 @@
 
     chart.sizeDomain(xDomain);
     chart.xDomain(xDomain);
-    chart.xAxis.tickFormat(d3.format('.02f'));
+    chart.xAxis.tickFormat(function (value) {
+      return d3.format("f")(value) + "€";
+    });
     chart.xAxis.axisLabel("Rendas (€)");
 
     d3.select('#rentMedianChart svg')

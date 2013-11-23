@@ -28,6 +28,9 @@
     };
 
     app.PAGE = "RESULT";
+
+    app.rentPrice = <%= @rent.price %>;
+    app.typologyMedian = <%= Rent.median(@rent.typology) %>;
   }());
 </script>
 
