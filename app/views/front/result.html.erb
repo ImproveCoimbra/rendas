@@ -1,0 +1,20 @@
+<h2>Obrigado!</h2>
+
+<p><%= @rent.price.to_i %>€</p>
+
+<p><%= @rent.typology %></p>
+
+<p><%= @rent.address %></p>
+
+<%= gmaps(
+  :markers => {
+    :data => @rent.to_gmaps4rails,
+  },
+  :map_options => {
+    :container_class => 'map-container grid-6',
+    :language => 'pt', :hl => 'pt', :region => 'pt',
+    :center_latitude => 40.20119879996395,
+    :center_longitude => -8.426894545555115,
+    :zoom => 13
+  }
+) %>

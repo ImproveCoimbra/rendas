@@ -10,15 +10,17 @@ class FrontController < ApplicationController
     @rent = Rent.new(params[:rent])
     @rent.postal_code = PostalCode.where(:code => code).first
     if @rent.save
-      redirect_to :action => :index
+      redirect_to :action => :result, :id => @rent
     else
       @rents = Rent.all
       render :index
     end
   end
 
-  def data
-    render :json => Rent.all.to_json
+  def result
+    @rent = Rent.find(params[:id])
   end
+
+  def about; end
 
 end

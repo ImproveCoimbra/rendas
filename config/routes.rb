@@ -8,5 +8,6 @@ Rendas::Application.routes.draw do
   root :to => 'front#index'
 
   post '/submit' => 'front#submit'
-  get  '/data' => 'front#data'
+  get  '/result/:id' => 'front#result'
+  get  '/sobre' => 'front#about', :as => :about
 end
