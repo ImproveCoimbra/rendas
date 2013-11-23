@@ -90,7 +90,9 @@ class RentsController < ApplicationController
         csv << [rent.code, rent.price, rent.typology]
       end
     end
-    render :text => output, :content_type => 'text/csv'
+    send_data(output,
+              :filename => "rendas.csv",
+              :type => "text/csv")
   end
 
 end
