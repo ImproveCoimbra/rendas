@@ -6,24 +6,30 @@
 
 <p><%= @rent.address %></p>
 
-  <script>
-    (function () {
-      "use strict";
+<hr>
 
-      window.app = {};
+<div id="rentMedianChart">
+  <svg class="rentMedianChart"></svg>
+</div>
 
-      app.TYPOLOGIES = {
-        QUARTO: "Quarto",
-        T0: "T0",
-        T1: "T1",
-        T2: "T2",
-        T3: "T3",
-        T4P: "T4+",
-      };
+<script>
+  (function () {
+    "use strict";
 
-      app.PAGE = "RESULT";
-    }());
-  </script>
+    window.app = {};
+
+    app.TYPOLOGIES = {
+      QUARTO: "Quarto",
+      T0: "T0",
+      T1: "T1",
+      T2: "T2",
+      T3: "T3",
+      T4P: "T4+",
+    };
+
+    app.PAGE = "RESULT";
+  }());
+</script>
 
 <%= gmaps(
   :markers => {
