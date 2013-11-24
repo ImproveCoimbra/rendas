@@ -4,6 +4,63 @@
 
       <h2>Obrigado pela tua ajuda</h2>
 
+      <p>Compara a tua renda com o valor médio (mediana) de <%= @rent.typology.pluralize %> em Coimbra:</p>
+
+      <div id="rentMedianChart">
+        <svg class="rentMedianChart"></svg>
+      </div>
+
+      <p>
+        A tua renda actual está
+        <strong>
+          <% if @rent.price < @median - 50 %>
+            abaixo
+          <% elsif @rent.price > @median + 50 %>
+            acima
+          <% else %>
+            perto
+          <% end %>
+        </strong>
+        do valor médio calculado até agora, com base nas <%= pluralize(Rent.where(:typology => @rent.typology).count, 'renda') %> que temos de <%= @rent.typology.pluralize %>.
+      </p>
+
+      <h3>Ajuda-nos a melhorar os resultados</h3>
+
+      <p>Partilha com os teus amigos que moram em Coimbra, para eles também compararem as suas rendas.</p>
+
+      <div class="row">
+        <div class="grid-1 offset-1">
+          <div id="fb-root"></div>
+          <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1412326508983603";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+          <div class="fb-share-button" data-href="http://rendas.improvecoimbra.org" data-type="box_count"></div>
+        </div>
+        <div class="grid-1">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://rendas.improvecoimbra.org" data-text="Quando pagas de renda em Coimbra?" data-count="vertical">Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+        <div class="grid-1">
+          <!-- Place this tag where you want the share button to render. -->
+          <div class="g-plus" data-action="share" data-annotation="vertical-bubble" data-height="60" data-href="http://rendas.improvecoimbra.org"></div>
+          <!-- Place this tag after the last share tag. -->
+          <script type="text/javascript">
+            (function() {
+              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+              po.src = 'https://apis.google.com/js/platform.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+          </script>
+        </div>
+        <div class="grid-1">
+          <script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+          <script type="IN/Share" data-url="http://rendas.improvecoimbra.org" data-counter="top"></script>
+        </div>
+      </div>
 
       <hr/>
 
@@ -34,3 +91,25 @@
     </div>
   </div>
 </div>
+
+<script>
+  (function () {
+    "use strict";
+
+    window.app = {};
+
+    app.TYPOLOGIES = {
+      QUARTO: "Quarto",
+      T0: "T0",
+      T1: "T1",
+      T2: "T2",
+      T3: "T3",
+      T4P: "T4+",
+    };
+
+    app.PAGE = "RESULT";
+
+    app.rentPrice = <%= @rent.price %>;
+    app.typologyMedian = <%= @median %>;
+  }());
+</script>

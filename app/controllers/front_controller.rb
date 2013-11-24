@@ -19,6 +19,7 @@ class FrontController < ApplicationController
 
   def result
     @rent = Rent.find(params[:id])
+    @median = Rent.median(@rent.typology)
   end
 
   def stats; end

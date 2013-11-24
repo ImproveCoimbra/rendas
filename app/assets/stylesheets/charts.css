@@ -2,3 +2,7 @@
   stroke: none;
   fill: none;
 }
+
+#rentMedianChart .y-nvtooltip {
+  display:none;
+}
