@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Quanto pagas de renda em Coimbra?</title>
+  <title>Quanto pagas de renda em Coimbra?<% if content_for?(:title) %> - <%= yield :title %><% end %></title>
+  <meta name="description" content="Compara quando pagas de renda em Coimbra e ajuda-nos a mapear os preços dos quartos e casas de Coimbra.">
+  <meta name="keywords" content="coimbra,rendas,preço,casas,improve coimbra" />
+  <meta name="robots" content="index,follow" />
   <%= stylesheet_link_tag "application", :media => "all" %>
   <link href='http://fonts.googleapis.com/css?family=Signika+Negative:400,700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
