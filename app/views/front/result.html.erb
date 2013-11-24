@@ -2,9 +2,9 @@
   <div class="row">
     <div class="grid-4 offset-1">
 
-      <h2>Obrigado pela tua ajuda</h2>
+      <h2>Obrigado pela tua ajuda!</h2>
 
-      <p>Compara a tua renda com o valor médio (mediana) de <%= @rent.typology.pluralize %> em Coimbra:</p>
+      <p>Compara agora a tua renda com o valor médio (mediana) de <%= @rent.typology.pluralize %> em Coimbra:</p>
 
       <div id="rentMedianChart">
         <svg class="rentMedianChart"></svg>
@@ -26,7 +26,7 @@
 
       <h3>Ajuda-nos a melhorar os resultados</h3>
 
-      <p>Partilha com os teus amigos que moram em Coimbra, para eles também compararem as suas rendas.</p>
+      <p>Partilha com os teus amigos que moram em Coimbra, para também eles compararem as suas rendas.</p>
 
       <div class="row">
         <div class="grid-1 offset-1">
@@ -82,7 +82,8 @@
             :map_options => {
               :container_class => 'result-map',
               :language => 'pt', :hl => 'pt', :region => 'pt',
-              :zoom => 13
+              :auto_zoom => false,
+              :zoom => 16
             }
           ) %>
         </div>

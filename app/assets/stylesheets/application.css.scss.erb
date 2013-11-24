@@ -6,7 +6,7 @@
 
 // GLOBAL
 
-$text-color: #666;
+$text-color: #444;
 $background-color: #FFF;
 $alt-background-color: #F2F2F2;
 $field-padding: 15px;
@@ -37,11 +37,6 @@ h1 {
   font-size: 2em;
 }
 
-h2 {
-  text-align: center;
-  font-size: 1.5em;
-}
-
 a, a:hover {
   color: $text-color;
   font-weight: bold;
@@ -51,7 +46,7 @@ a:hover.btn {
 }
 
 hr {
-  margin: 4em auto;
+  margin: 2em auto 4em;
 }
 
 .gmaps4rails_map {
@@ -61,6 +56,33 @@ hr {
   label {
     width: auto; display:inline;
   }
+}
+
+input {
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color: #DDD;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #DDD;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #DDD;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #DDD;
+  }
+}
+
+.arrow-down {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-top: 40px solid #FFF;
+  z-index: 1;
 }
 
 // LAYOUT
@@ -88,6 +110,11 @@ hr {
       font-family: 'Signika Negative', sans-serif;
     }
   }
+
+  .arrow-down {
+    bottom: -57px;
+    border-top-color: rgba(255,255,255,0.8);
+  }
 }
 
 #new-rent {
@@ -108,14 +135,13 @@ hr {
   }
 
   .field {
+    position: relative;
     display: inline-block;
     background-color: $background-color;
     line-height: 2.5em;
     margin: 0em 2em 1em 0em;
     padding-right: $field-padding;
-    -webkit-border-radius: $border-radius;
-    -moz-border-radius: $border-radius;
-    border-radius: $border-radius;
+    @include border-radius;
     @include box-shadow;
     label {
       display: inline-block;
@@ -142,15 +168,23 @@ hr {
         box-shadow: none;
       }
     }
+    small {
+      position: absolute;
+      left: $field-padding;
+      bottom: -3em;
+      font-size: 0.6em;
+      text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+    }
   }
 
   input[name="rent[price]"] {
     width: 60px;
     text-align: right;
-    padding-right: 5px;
+    margin-right: 5px;
   }
   input[name="rent[postal_code][0]"] {
     width: 40px;
+    margin-left: 5px;
   }
   input[name="rent[postal_code][1]"] {
     width: 30px;
@@ -166,6 +200,13 @@ hr {
     &:hover {
       opacity: 0.9;
     }
+  }
+}
+
+#rents-section {
+  text-align: center;
+  .grid-6 {
+    position: relative;
   }
 }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rendas</title>
+  <title>Quanto pagas de renda em Coimbra?</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <link href='http://fonts.googleapis.com/css?family=Signika+Negative:400,700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
@@ -14,19 +14,21 @@
         <div class="row">
           <div class="grid-third">
             <h1>
-              <a href="/">Quanto pagas de renda?</a>
+              <a href="/">Quanto pagas de renda em Coimbra?</a>
             </h1>
           </div>
           <div class="grid-two-thirds">
             <div id="navigation">
               <%= link_to 'Home', '/' %>&nbsp;&nbsp;
-              <%= link_to 'Estatísticas', stats_path %>&nbsp;&nbsp;
               <%= link_to 'Sobre', about_path %>&nbsp;&nbsp;
+              <%= link_to 'Estatísticas', stats_path %>&nbsp;&nbsp;
               <%= link_to 'Exportar', export_rents_path(:format => 'csv') %>&nbsp;&nbsp;
-              <%= link_to 'Contacto', 'mailto:info@improvecoimbra.org' %>
+              <%= link_to 'Contacto', 'mailto:info@improvecoimbra.org' %>&nbsp;&nbsp;
+              <%= link_to 'Made in Improve Coimbra', 'http://improvecoimbra.org' %>
             </div>
           </div>
         </div>
+        <div class="arrow-down"></div>
       </div>
     </div>
     <div class="container">
@@ -40,19 +42,7 @@
     <%= yield %>
   </div>
 
-  <div id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="grid-6">
-            <%= link_to 'Made in Improve Coimbra', 'http://improvecoimbra.org' %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <%= javascript_include_tag "application" %>
-
   <%= yield :scripts %>
 </body>
 </html>
