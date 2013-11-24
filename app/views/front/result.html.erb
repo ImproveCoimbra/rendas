@@ -1,20 +1,36 @@
-<h2>Obrigado!</h2>
+<div class="container">
+  <div class="row">
+    <div class="grid-4 offset-1">
 
-<p><%= @rent.price.to_i %>€</p>
+      <h2>Obrigado pela tua ajuda</h2>
 
-<p><%= @rent.typology %></p>
 
-<p><%= @rent.address %></p>
+      <hr/>
 
-<%= gmaps(
-  :markers => {
-    :data => @rent.to_gmaps4rails,
-  },
-  :map_options => {
-    :container_class => 'map-container grid-6',
-    :language => 'pt', :hl => 'pt', :region => 'pt',
-    :center_latitude => 40.20119879996395,
-    :center_longitude => -8.426894545555115,
-    :zoom => 13
-  }
-) %>
+      <p>Podes confirmar se a localização que temos para o teu código postal está perto da correcta?</p>
+
+      <div class="row">
+        <div class="grid-third">
+          <h4>Renda</h4>
+          <p><%= @rent.price %>€ (<%= @rent.typology %>)</p>
+          <h4>Morada</h4>
+          <p><%= @rent.address %></p>
+          <p><a href="mailto:info@improvecoimbra.org?subject=Rendas: Erro na localização&body=A localização do meu código postal está longe da correcta: http://rendas.improvecoimbra.org/result/<%= @rent.id %>" class="btn">Encontrei um erro</a></p>
+        </div>
+        <div class="grid-two-thirds">
+          <%= gmaps(
+            :markers => {
+              :data => @rent.to_gmaps4rails,
+            },
+            :map_options => {
+              :container_class => 'result-map',
+              :language => 'pt', :hl => 'pt', :region => 'pt',
+              :zoom => 13
+            }
+          ) %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

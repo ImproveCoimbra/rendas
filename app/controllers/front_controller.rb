@@ -21,6 +21,8 @@ class FrontController < ApplicationController
     @rent = Rent.find(params[:id])
   end
 
+  def stats; end
+
   def about; end
 
 end

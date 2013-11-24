@@ -1,17 +1,65 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
  *= require_tree ./lib
  *= require_self
  *= require_tree .
  */
+
+// GLOBAL
+
+$text-color: #666;
+$background-color: #FFF;
+$alt-background-color: #F2F2F2;
+$field-padding: 15px;
+$border-radius: 15px;
+
+@mixin border-radius {
+  -webkit-border-radius: $border-radius;
+     -moz-border-radius: $border-radius;
+      -ms-border-radius: $border-radius;
+       -o-border-radius: $border-radius;
+          border-radius: $border-radius;
+}
+
+@mixin box-shadow {
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+}
+
+body {
+  color: $text-color;
+}
+
+h1, h2, h3 {
+  font-family: 'Signika Negative', sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+a, a:hover {
+  color: $text-color;
+  font-weight: bold;
+}
+a:hover.btn {
+  font-weight: normal;
+}
+
+.gmaps4rails_map {
+  img {
+    max-width: none;
+  }
+  label {
+    width: auto; display:inline;
+  }
+}
+
+// LAYOUT
 
 #header {
   background-image: url('<%= asset_path 'header_background.jpg' %>');
@@ -19,8 +67,8 @@
   background-repeat: no-repeat;
 
   #header-title {
-    padding: 2em 0;
-    background: rgba(222,222,222,0.5);
+    padding: 1em 0;
+    background: rgba(255,255,255,0.8);
     .container {
       margin-top: 0;
       position: relative;
@@ -32,22 +80,103 @@
     right: 0;
     bottom: 0;
     text-align: right;
+    a {
+      font-family: 'Signika Negative', sans-serif;
+    }
   }
 }
 
-#map {
-  height: 400px;
+#new-rent {
+  margin-top: 5em;
+  margin-bottom: 4em;
 
-  img {
-    max-width: none;
+  .errors {
+    margin-bottom: 1em;
+    span {
+      margin-right: $field-padding;
+      background-color: $background-color;
+      line-height: 2.5em;
+      padding: $field-padding;
+      color: red;
+      @include border-radius;
+      @include box-shadow;
+    }
   }
 
-  label {
-    width: auto; display:inline;
+  .field {
+    display: inline-block;
+    background-color: $background-color;
+    line-height: 2.5em;
+    margin: 0em 2em 1em 0em;
+    padding-right: $field-padding;
+    -webkit-border-radius: $border-radius;
+    -moz-border-radius: $border-radius;
+    border-radius: $border-radius;
+    @include box-shadow;
+    label {
+      display: inline-block;
+      padding: 0 $field-padding;
+      margin: 0;
+      background-color: $alt-background-color;
+      -webkit-border-top-left-radius: $border-radius;
+      -webkit-border-bottom-left-radius: $border-radius;
+      -moz-border-radius-topleft: $border-radius;
+      -moz-border-radius-bottomleft: $border-radius;
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+    input, select {
+      background: transparent;
+      border: 0;
+      border-color: transparent;
+      outline: none;
+      margin: 0;
+      padding: 0;
+      vertical-align: baseline;
+      &:focus {
+        outline: 0;
+        box-shadow: none;
+      }
+    }
   }
+
+  input[name="rent[price]"] {
+    width: 60px;
+    text-align: right;
+    padding-right: 5px;
+  }
+  input[name="rent[postal_code][0]"] {
+    width: 40px;
+  }
+  input[name="rent[postal_code][1]"] {
+    width: 30px;
+  }
+
+  .btn-large {
+    -webkit-border-radius: $border-radius;
+    -moz-border-radius: $border-radius;
+    border-radius: $border-radius;
+    background-color: $text-color;
+    border-color: $text-color;
+    @include box-shadow;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.home-map #map {
+  height: 20em;
 }
 
 #footer {
   padding: 2em 0;
   text-align: center;
+}
+
+
+// RESULT PAGE
+
+.result-map #map {
+  height: 18em;
 }

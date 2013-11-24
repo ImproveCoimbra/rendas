@@ -9,5 +9,6 @@ Rendas::Application.routes.draw do
 
   post '/submit' => 'front#submit'
   get  '/result/:id' => 'front#result'
+  get  '/stats' => 'front#stats', :as => :stats
   get  '/sobre' => 'front#about', :as => :about
 end

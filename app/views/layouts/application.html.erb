@@ -3,6 +3,7 @@
 <head>
   <title>Rendas</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Signika+Negative:400,700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -19,8 +20,9 @@
           <div class="grid-two-thirds">
             <div id="navigation">
               <%= link_to 'Home', '/' %>&nbsp;&nbsp;
+              <%= link_to 'Estatísticas', stats_path %>&nbsp;&nbsp;
               <%= link_to 'Sobre', about_path %>&nbsp;&nbsp;
-              <%= link_to 'Exportar dados', export_rents_path(:format => 'csv') %>&nbsp;&nbsp;
+              <%= link_to 'Exportar', export_rents_path(:format => 'csv') %>&nbsp;&nbsp;
               <%= link_to 'Contacto', 'mailto:info@improvecoimbra.org' %>
             </div>
           </div>

@@ -1,39 +1,41 @@
 <% content_for :header_contents do %>
-  <div class="row">
+  <div id="new-rent" class="row">
     <div class="grid-6">
 
       <form action="<%= submit_path %>" method="post">
 
         <% if @rent.errors.any? %>
-          <div class="errors">
+          <div class="errors grid-6">
             <% for error in @rent.errors.values %>
-              <p><%= error.first %></p>
+              <span><%= error.first %></span>
             <% end %>
           </div>
         <% end %>
 
-        <p>
-          <input type="text" class="input-inline" placeholder="350" name="rent[price]" value="<%= "%.2f" % @rent.price if @rent.price and @rent.price > 0 %>" maxlength="6" size="6" /> €
-        </p>
+        <div class="grid-two-thirds">
+          <div class="field">
+            <label for="rent[price]">Valor</label>
+            <input type="text" class="input-inline" placeholder="350" name="rent[price]" value="<%= "%.2f" % @rent.price if @rent.price and @rent.price > 0 %>" maxlength="6" size="6" /> €
+          </div>
+          <div class="field">
+            <label for="rent[postal_code]">Código Postal</label>
+            <input type="text" class="input-inline" name="rent[postal_code][0]" placeholder="3000" value="<%= @rent.postal_code_array[0] %>" maxlength="4" size="4" />
+            -
+            <input type="text" class="input-inline" name="rent[postal_code][1]" placeholder="123" value="<%= @rent.postal_code_array[1] %>" maxlength="3" size="3" />
+          </div>
+          <div class="field">
+            <label for="rent[typology]">Tipologia</label>
+            <select name="rent[typology]" class="input-inline">
+              <% for typology in Rent::TYPOLOGIES %>
+                <option <% if @rent.typology == typology %>selected="selected"<% end %>><%= typology %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
 
-        <p>
-          <input type="text" class="input-inline" name="rent[postal_code][0]" placeholder="1234" value="<%= @rent.postal_code_array[0] %>" maxlength="4" size="4" />
-          -
-          <input type="text" class="input-inline" name="rent[postal_code][1]" placeholder="567" value="<%= @rent.postal_code_array[1] %>" maxlength="3" size="3" />
-        </p>
-
-        <p>
-          Tipologia
-          <select name="rent[typology]" class="input-inline">
-            <% for typology in Rent::TYPOLOGIES %>
-              <option <% if @rent.typology == typology %>selected="selected"<% end %>><%= typology %></option>
-            <% end %>
-          </select>
-        </p>
-
-        <p>
+        <div class="grid-third">
           <input type="submit" value="Enviar" class="btn btn-block btn-large btn-blue" />
-        </p>
+        </div>
 
       </form>
 
@@ -41,72 +43,14 @@
   </div>
 <% end %>
 
-<div class="container">
-  <div class="row">
-    <div class="grid-6">
-
-<!--
-      <hr>
-
-      <h2>Rendas</h2>
-
-      <table class="table">
-        <% for rent in @rents %>
-          <tr>
-            <td><%= "%i" % rent.price %>€</td>
-            <td><%= rent.postal_code %></td>
-            <td><%= rent.typology %></td>
-            <td><%= rent.address %></td>
-            <td><%= rent.county %></td>
-            <td><%= rent.lat %>, <%= rent.lng %></td>
-          </tr>
-        <% end %>
-      </table>
-
-      <hr>
--->
-
-      <h2>As rendas de Coimbra</h2>
-
-    </div>
-  </div>
-</div>
-
-<script>
-  (function () {
-    "use strict";
-
-    window.app = {};
-
-    app.TYPOLOGIES = {
-      QUARTO: "Quarto",
-      T0: "T0",
-      T1: "T1",
-      T2: "T2",
-      T3: "T3",
-      T4P: "T4+",
-    };
-
-    app.rentsByTipology = {};
-    app.rentsByTipology[app.TYPOLOGIES.QUARTO] = <%= Rent.median("Quarto") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T0] = <%= Rent.median("T0") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T1] = <%= Rent.median("T1") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T2] = <%= Rent.median("T2") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T3] = <%= Rent.median("T3") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T4P] = <%= Rent.median("T4+") || "null" %>;
-  }());
-</script>
-
-<div id="typologyChart">
-  <svg class="typologyChart"></svg>
-</div>
+<h2>As rendas de Coimbra</h2>
 
 <%= gmaps(
     :markers => {
       :data => @rents.to_gmaps4rails,
     },
     :map_options => {
-      :container_class => 'map-container',
+      :container_class => 'home-map',
       :language => 'pt', :hl => 'pt', :region => 'pt',
       :center_latitude => 40.20119879996395,
       :center_longitude => -8.426894545555115,

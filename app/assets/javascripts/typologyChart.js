@@ -5,7 +5,7 @@
   "use strict";
 
   /*Constants*/
-  var DEFAULT_COLOR = "#8e8eff";
+  var DEFAULT_COLOR = "#666";
   var TYPOLOGY_LABELS = {};
   TYPOLOGY_LABELS[app.TYPOLOGIES.QUARTO] = "Quarto";
   TYPOLOGY_LABELS[app.TYPOLOGIES.T0] = "T0";
@@ -13,7 +13,6 @@
   TYPOLOGY_LABELS[app.TYPOLOGIES.T2] = "T2";
   TYPOLOGY_LABELS[app.TYPOLOGIES.T3] = "T3";
   TYPOLOGY_LABELS[app.TYPOLOGIES.T4P] = "T4+";
-  var Y_AXIS_LABEL = 'Rendas (€)';
 
   //Boostrapt the data that will be used by the chart
   var data = [{
@@ -49,7 +48,6 @@
         ;
 
     chart.yAxis.tickFormat(d3.format(".02f"));
-    chart.yAxis.axisLabel(Y_AXIS_LABEL);
 
     chart.valueFormat(function (value) {
       return d3.format(".02f")(value) + "€";
