@@ -16,3 +16,11 @@
 //= require nvd3/nv.d3
 //= require underscore
 //= require_tree .
+
+$(function() {
+
+  if (navigator.userAgent.match(/msie/i)) {
+    $("html").addClass("ie");
+  }
+
+});

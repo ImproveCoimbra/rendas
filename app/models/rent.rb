@@ -17,6 +17,8 @@ class Rent
 
   belongs_to :postal_code
 
+  index({ :typology => 1 }, { :background => true })
+
   default_scope includes(:postal_code)
 
   delegate :lat, :lng, :latitude, :longitude, :address, :county, :code, :to => :postal_code
