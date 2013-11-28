@@ -1,6 +1,6 @@
 <% content_for :title do %>Compara a tua renda<% end %>
 
-<div class="container">
+<div id="page" class="container">
   <div class="row">
     <div class="grid-4 offset-1">
 
@@ -14,17 +14,23 @@
 
       <p>
         A tua renda actual está
-        <strong>
-          <% if @rent.price < @median - 50 %>
-            abaixo
-          <% elsif @rent.price > @median + 50 %>
-            acima
-          <% else %>
-            perto
-          <% end %>
-        </strong>
-        do valor médio calculado até agora, com base nas <%= pluralize(Rent.where(:typology => @rent.typology).count, 'renda') %> que temos de <%= @rent.typology.pluralize %>.
+        <% if @rent.price == @median %>
+          <strong>igual</strong> ao
+        <% else %>
+          <strong>
+            <% if @rent.price < @median - 50 %>
+              abaixo
+            <% elsif @rent.price > @median + 50 %>
+              acima
+            <% else %>
+              perto
+            <% end %>
+          </strong> do
+        <% end %>
+        valor médio calculado até agora, com base nas <%= pluralize(Rent.where(:typology => @rent.typology).count, 'renda') %> que temos de <%= @rent.typology.pluralize %>.
       </p>
+
+      <hr/>
 
       <h3>Ajuda-nos a melhorar os resultados</h3>
 
@@ -66,7 +72,7 @@
 
       <hr/>
 
-      <p>Podes confirmar se a localização que temos para o teu código postal está perto da correcta?</p>
+      <p><em>Podes confirmar se a localização que temos para o teu código postal está perto da correcta?</em></p>
 
       <div class="row">
         <div class="grid-third">

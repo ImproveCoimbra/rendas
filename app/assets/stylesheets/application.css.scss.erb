@@ -21,11 +21,12 @@ $border-radius: 15px;
 }
 
 @mixin box-shadow {
-  box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
 }
 
 body {
   color: $text-color;
+  margin-bottom: 4em;
 }
 
 h1, h2, h3 {
@@ -46,7 +47,7 @@ a:hover.btn {
 }
 
 hr {
-  margin: 2em auto 4em;
+  margin: 2em auto;
 }
 
 .gmaps4rails_map {
@@ -95,9 +96,14 @@ input {
   background-size: cover;
   background-repeat: no-repeat;
 
+  h1 {
+    margin-bottom: 0.5em;
+  }
+
   #header-title {
     padding: 1em 0;
     background: rgba(255,255,255,0.8);
+    @include box-shadow;
     .container {
       margin-top: 0;
       position: relative;
@@ -121,8 +127,8 @@ input {
 }
 
 #new-rent {
-  margin-top: 5em;
-  margin-bottom: 4em;
+  margin-top: 8em;
+  margin-bottom: 7em;
 
   .errors {
     margin-bottom: 1em;
@@ -173,10 +179,15 @@ input {
     }
     small {
       position: absolute;
-      left: $field-padding;
-      bottom: -3em;
+      left: $field-padding/2;
+      bottom: -2em;
       font-size: 0.6em;
-      text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+      //text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+      background-color: $background-color;
+      padding: 0 $field-padding/2;
+      line-height: 17px;
+      @include border-radius;
+      @include box-shadow;
     }
   }
 
@@ -192,22 +203,41 @@ input {
   input[name="rent[postal_code][1]"] {
     width: 30px;
   }
+  select[name="rent[typology]"] {
+    border: 0 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 0.01px; /* Removes default arrow from firefox*/
+    text-overflow: "";  /*Removes default arrow from firefox*/
+    display: inline-block;
+    padding: 0 15px 0 5px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTM5jWRgMAAAAVdEVYdENyZWF0aW9uIFRpbWUAMi8xNy8wOCCcqlgAAAQRdEVYdFhNTDpjb20uYWRvYmUueG1wADw/eHBhY2tldCBiZWdpbj0iICAgIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDQuMS1jMDM0IDQ2LjI3Mjk3NiwgU2F0IEphbiAyNyAyMDA3IDIyOjExOjQxICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4YXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iPgogICAgICAgICA8eGFwOkNyZWF0b3JUb29sPkFkb2JlIEZpcmV3b3JrcyBDUzM8L3hhcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHhhcDpDcmVhdGVEYXRlPjIwMDgtMDItMTdUMDI6MzY6NDVaPC94YXA6Q3JlYXRlRGF0ZT4KICAgICAgICAgPHhhcDpNb2RpZnlEYXRlPjIwMDgtMDMtMjRUMTk6MDA6NDJaPC94YXA6TW9kaWZ5RGF0ZT4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyI+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2UvcG5nPC9kYzpmb3JtYXQ+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDUdUmQAAACdSURBVDiN3dKxDYNADIXh36c07MESDEBHJDawR7vb4KSkuwFuCfag41JESCQhJAoFUty5eJ9l2VJKYU+5Xen/AE7LJoRwAboPmauqnlcBoOv7fjMdY3wYIMszigje+9K2LQDTNAHg3H3TlBKqKpsAgPe+NE3DOI4AVFVFzhkzk+e/WQVmpK5rAIZhwMwE4GtgRoC34Rfglzr+kY4HbthSQqXTR/5kAAAAAElFTkSuQmCC') no-repeat right center;
+    &::-ms-expand {
+      display: none;
+    }
+  }
 
   .btn-large {
     -webkit-border-radius: $border-radius;
     -moz-border-radius: $border-radius;
     border-radius: $border-radius;
-    background-color: $text-color;
-    border-color: $text-color;
+    background-color: yellowgreen;
+    border-color: yellowgreen;
+    margin-top: 0;
     @include box-shadow;
     &:hover {
-      opacity: 0.9;
+      opacity: 0.95;
     }
   }
 }
 
+#page {
+  margin-top: 2em;
+}
+
 #rents-section {
   text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 -1px 2px rgba(0,0,0,0.1);
   .grid-6 {
     position: relative;
   }
