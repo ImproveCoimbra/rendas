@@ -14,20 +14,10 @@
     <div id="header-title">
       <div class="container">
         <div class="row">
-          <div class="grid-third">
+          <div class="grid-6">
             <h1>
               <a href="/">Quanto pagas de renda em Coimbra?</a>
             </h1>
-          </div>
-          <div class="grid-two-thirds">
-            <div id="navigation">
-              <%= link_to 'Home', '/' %>&nbsp;&nbsp;
-              <%= link_to 'Sobre', about_path %>&nbsp;&nbsp;
-              <%= link_to 'Estatísticas', stats_path %>&nbsp;&nbsp;
-              <%= link_to 'Exportar', export_rents_path(:format => 'csv') %>&nbsp;&nbsp;
-              <%= link_to 'Contacto', 'mailto:info@improvecoimbra.org' %>&nbsp;&nbsp;
-              <%= link_to 'Made in Improve Coimbra', 'http://improvecoimbra.org', :target => '_blank' %>
-            </div>
           </div>
         </div>
         <!--<div class="arrow-down"></div>-->
@@ -42,6 +32,12 @@
 
   <div id="contents">
     <%= yield %>
+  </div>
+
+  <div id="footer">
+    <%= link_to 'Sobre', about_path %>&nbsp;&nbsp;
+    <%= link_to 'Contacto', 'mailto:info@improvecoimbra.org' %>&nbsp;&nbsp;
+    <%= link_to 'Made in Improve Coimbra', 'http://improvecoimbra.org', :target => '_blank' %>
   </div>
 
   <%= javascript_include_tag "application" %>

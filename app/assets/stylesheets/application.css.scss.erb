@@ -26,7 +26,6 @@ $border-radius: 15px;
 
 body {
   color: $text-color;
-  margin-bottom: 4em;
 }
 
 h1, h2, h3 {
@@ -101,22 +100,12 @@ input {
   }
 
   #header-title {
-    padding: 1em 0;
+    padding: 2em 0;
     background: rgba(255,255,255,0.8);
     @include box-shadow;
     .container {
       margin-top: 0;
       position: relative;
-    }
-  }
-
-  #navigation {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    text-align: right;
-    a {
-      font-family: 'Signika Negative', sans-serif;
     }
   }
 
@@ -218,12 +207,10 @@ input {
   }
 
   .btn-large {
-    -webkit-border-radius: $border-radius;
-    -moz-border-radius: $border-radius;
-    border-radius: $border-radius;
     background-color: yellowgreen;
     border-color: yellowgreen;
     margin-top: 0;
+    @include border-radius;
     @include box-shadow;
     &:hover {
       opacity: 0.95;
@@ -235,16 +222,32 @@ input {
   margin-top: 2em;
 }
 
+.section {
+  padding-top: 2em;
+  padding-bottom: 0.5em;
+  h2, p {
+    margin-bottom: 0.5em;
+  }
+}
+
 #rents-section {
-  text-align: center;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 -1px 2px rgba(0,0,0,0.1);
   .grid-6 {
     position: relative;
   }
 }
 
-.home-map #map {
-  height: 20em;
+#stats-section {
+  box-shadow: 0 -1px 2px rgba(0,0,0,0.1);
+}
+
+.home-map {
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset, 0 -1px 2px rgba(0,0,0,0.1) inset;
+  #map {
+    position: relative;
+    height: 20em;
+  }
 }
 
 #footer {
