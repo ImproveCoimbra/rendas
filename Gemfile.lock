@@ -60,6 +60,7 @@ GEM
       tzinfo (~> 0.3.29)
     moped (1.5.1)
     multi_json (1.8.2)
+    newrelic_rpm (3.6.4.122)
     origin (1.1.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -123,6 +124,7 @@ DEPENDENCIES
   gmaps4rails (= 1.5.6)
   jquery-rails
   mongoid (= 3.1.5)
+  newrelic_rpm
   rails (= 3.2.15)
   rb-readline (~> 0.4.2)
   sass-rails
