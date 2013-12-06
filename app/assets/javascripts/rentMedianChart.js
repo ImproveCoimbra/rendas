@@ -34,8 +34,6 @@
   var chart, xDomain;
 
   xDomain = [0, xDomainMaxValue];
-  console.log(_.pluck(_.first(data).values, "x"));
-  console.log(app.typologyMedian);
 
   nv.addGraph(function() {
     chart = nv.models.scatterChart()
@@ -60,6 +58,7 @@
         .datum(data)
         .call(chart);
 
+    nv.dev = false;
     nv.utils.windowResize(chart.update);
 
     return chart;

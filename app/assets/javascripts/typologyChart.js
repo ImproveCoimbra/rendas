@@ -61,6 +61,7 @@
         .datum(data)
         .call(chart);
 
+    nv.dev = false;
     nv.utils.windowResize(chart.update);
 
     return chart;
