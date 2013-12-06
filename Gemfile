@@ -14,6 +14,7 @@ gem 'mongoid', '3.1.5'
 #Heroku
 gem 'unicorn', :platform => :ruby
 gem 'newrelic_rpm'
+gem 'heroku-deflater', :group => :production
 
 group :development do
   gem 'rb-readline', '~> 0.4.2'

@@ -41,6 +41,8 @@ GEM
     execjs (2.0.2)
     geocoder (1.1.8)
     gmaps4rails (1.5.6)
+    heroku-deflater (0.5.2)
+      rack (>= 1.4.5)
     hike (1.2.3)
     i18n (0.6.5)
     journey (1.0.4)
@@ -122,6 +124,7 @@ DEPENDENCIES
   coffee-rails
   geocoder
   gmaps4rails (= 1.5.6)
+  heroku-deflater
   jquery-rails
   mongoid (= 3.1.5)
   newrelic_rpm
