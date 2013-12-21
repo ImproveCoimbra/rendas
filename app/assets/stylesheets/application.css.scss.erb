@@ -9,7 +9,7 @@
 $text-color: #444;
 $background-color: #FFF;
 $alt-background-color: #F2F2F2;
-$field-padding: 15px;
+$field-padding: 10px;
 $border-radius: 15px;
 
 @mixin border-radius {
@@ -146,14 +146,14 @@ input {
     position: relative;
     display: inline-block;
     background-color: $background-color;
-    line-height: 2.5em;
+    line-height: 2.25em;
     margin: 0em 2em 2em 0em;
     padding-right: $field-padding;
     @include border-radius;
     @include box-shadow;
     label {
       display: inline-block;
-      width: 70px;
+      width: 66px;
       padding: 0 $field-padding;
       margin: 0;
       text-align: center;
@@ -222,7 +222,8 @@ input {
     background-color: yellowgreen;
     border-color: yellowgreen;
     margin-top: 0;
-    width: 220px;
+    width: 180px;
+    line-height: 1em;
     @include border-radius;
     @include box-shadow;
     &:hover {
@@ -238,7 +239,11 @@ input {
 .section {
   padding-top: 2em;
   padding-bottom: 0.5em;
-  h2, p {
+  h2 {
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+  p {
     margin-bottom: 0.5em;
   }
 }
