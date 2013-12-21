@@ -1,0 +1,30 @@
+test:
+  sessions:
+    default:
+      database: rendas_dev
+      hosts:
+        - localhost:27017
+  options:
+    identity_map_enabled: true
+
+test:
+  sessions:
+    default:
+      database: rendas_test
+      hosts:
+        - localhost:27017
+  options:
+    identity_map_enabled: true
+
+production:
+  sessions:
+    default:
+      hosts:
+        - <%= ENV['MONGODB_HOST'] %>
+      database: <%= ENV['MONGODB_DATABASE'] %>
+      username: <%= ENV['MONGODB_USERNAME'] %>
+      password: <%= ENV['MONGODB_PASSWORD'] %>
+      options:
+        safe: true
+  options:
+    identity_map_enabled: true
