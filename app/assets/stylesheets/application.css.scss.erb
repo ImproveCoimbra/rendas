@@ -28,6 +28,10 @@ body {
   color: $text-color;
 }
 
+.container {
+  max-width: 70em;
+}
+
 h1, h2, h3 {
   font-family: 'Signika Negative', sans-serif;
   font-weight: bold;
@@ -96,11 +100,16 @@ input {
   background-repeat: no-repeat;
 
   h1 {
-    margin-bottom: 0.5em;
+    font-size: 3em;
+    padding: 0;
+    margin: 0;
+    a:hover {
+      text-decoration: none;
+    }
   }
 
   #header-title {
-    padding: 2em 0;
+    padding: 2.5em 0;
     background: rgba(255,255,255,0.8);
     @include box-shadow;
     .container {
@@ -143,8 +152,10 @@ input {
     @include box-shadow;
     label {
       display: inline-block;
+      width: 70px;
       padding: 0 $field-padding;
       margin: 0;
+      text-align: center;
       background-color: $alt-background-color;
       -webkit-border-top-left-radius: $border-radius;
       -webkit-border-bottom-left-radius: $border-radius;
@@ -210,6 +221,7 @@ input {
     background-color: yellowgreen;
     border-color: yellowgreen;
     margin-top: 0;
+    width: 220px;
     @include border-radius;
     @include box-shadow;
     &:hover {
@@ -238,7 +250,7 @@ input {
 }
 
 #stats-section {
-  box-shadow: 0 -1px 2px rgba(0,0,0,0.1);
+  //box-shadow: 0 -1px 2px rgba(0,0,0,0.1);
 }
 
 .home-map {
@@ -251,7 +263,7 @@ input {
 }
 
 #footer {
-  padding: 3em 0;
+  padding: 6em 0 3em;
   text-align: center;
 }
 

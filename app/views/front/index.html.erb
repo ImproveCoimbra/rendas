@@ -18,7 +18,7 @@
             <input type="text" class="input-inline" placeholder="350" name="rent[price]" value="<%= "%.2f" % @rent.price if @rent.price and @rent.price > 0 %>" maxlength="6" size="6" /> €
           </div>
           <div class="field">
-            <label for="rent[postal_code]">Código Postal</label>
+            <label for="rent[postal_code]">C. Postal</label>
             <input type="text" class="input-inline" name="rent[postal_code][0]" placeholder="3000" value="<%= @rent.postal_code_array[0] %>" maxlength="4" size="4" />
             -
             <input type="text" class="input-inline" name="rent[postal_code][1]" placeholder="123" value="<%= @rent.postal_code_array[1] %>" maxlength="3" size="3" />
@@ -35,7 +35,7 @@
         </div>
 
         <div class="grid-third">
-          <input type="submit" value="Adicionar a minha renda" class="btn btn-block btn-large btn-blue" />
+          <input type="submit" value="Compara a tua renda" class="btn btn-block btn-large btn-blue" />
         </div>
 
       </form>
@@ -75,7 +75,6 @@
     <div class="row">
       <div class="grid-6">
         <h2>Estatísticas</h2>
-        <p>Já foram submetidas <strong><%= Rent.count %></strong> rendas em Coimbra pelos visitantes deste website.</p>
         <p>Estes são os valores médios (medianas) por tipologia, até agora:</p>
         <div class="row">
           <div class="grid-4 offset-1">

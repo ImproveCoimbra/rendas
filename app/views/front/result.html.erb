@@ -6,12 +6,6 @@
 
       <h2>Obrigado pela tua ajuda!</h2>
 
-      <p>Compara agora a tua renda com o valor médio (mediana) de <%= @rent.typology.pluralize %> em Coimbra:</p>
-
-      <div id="rentMedianChart">
-        <svg class="rentMedianChart"></svg>
-      </div>
-
       <p>
         A tua renda actual está
         <% if @rent.price == @median %>
@@ -27,14 +21,43 @@
             <% end %>
           </strong> do
         <% end %>
-        valor médio calculado até agora, com base nas <%= pluralize(Rent.where(:typology => @rent.typology).count, 'renda') %> que temos de <%= @rent.typology.pluralize %>.
+        valor médio calculado até agora, com base nas <%= pluralize(Rent.where(:typology => @rent.typology).count, 'renda') %> que temos de <%= @rent.typology.pluralize %> em Coimbra.
       </p>
+
+      <div id="rentMedianChart">
+        <svg class="rentMedianChart"></svg>
+      </div>
+
+      <p><em>Podes confirmar se a localização que temos para o teu código postal está perto da correcta?</em></p>
+
+      <div class="row">
+        <div class="grid-third">
+          <h4>Renda</h4>
+          <p><%= @rent.price %>€ (<%= @rent.typology %>)</p>
+          <h4>Morada</h4>
+          <p><%= @rent.address %></p>
+          <p><a href="mailto:info@improvecoimbra.org?subject=Rendas: Erro na localização&body=A localização do meu código postal está longe da correcta: http://rendas.improvecoimbra.org/result/<%= @rent.id %>" class="btn">Encontrei um erro</a></p>
+        </div>
+        <div class="grid-two-thirds">
+          <%= gmaps(
+            :markers => {
+              :data => @rent.to_gmaps4rails,
+            },
+            :map_options => {
+              :container_class => 'result-map',
+              :language => 'pt', :hl => 'pt', :region => 'pt',
+              :auto_zoom => false,
+              :zoom => 16
+            }
+          ) %>
+        </div>
+      </div>
 
       <hr/>
 
-      <h3>Ajuda-nos a melhorar os resultados</h3>
+      <h3>Partilha o "Quanto pagas de rendas em Coimbra?"</h3>
 
-      <p>Partilha com os teus amigos que moram em Coimbra, para também eles compararem as suas rendas.</p>
+      <p>Ajuda-nos a melhorar os resultados. Partilha este site com os teus amigos que moram em Coimbra, para também eles compararem as suas rendas.</p>
 
       <div class="row">
         <div class="grid-1 offset-1">
@@ -67,33 +90,6 @@
         <div class="grid-1">
           <script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
           <script type="IN/Share" data-url="http://rendas.improvecoimbra.org" data-counter="top"></script>
-        </div>
-      </div>
-
-      <hr/>
-
-      <p><em>Podes confirmar se a localização que temos para o teu código postal está perto da correcta?</em></p>
-
-      <div class="row">
-        <div class="grid-third">
-          <h4>Renda</h4>
-          <p><%= @rent.price %>€ (<%= @rent.typology %>)</p>
-          <h4>Morada</h4>
-          <p><%= @rent.address %></p>
-          <p><a href="mailto:info@improvecoimbra.org?subject=Rendas: Erro na localização&body=A localização do meu código postal está longe da correcta: http://rendas.improvecoimbra.org/result/<%= @rent.id %>" class="btn">Encontrei um erro</a></p>
-        </div>
-        <div class="grid-two-thirds">
-          <%= gmaps(
-            :markers => {
-              :data => @rent.to_gmaps4rails,
-            },
-            :map_options => {
-              :container_class => 'result-map',
-              :language => 'pt', :hl => 'pt', :region => 'pt',
-              :auto_zoom => false,
-              :zoom => 16
-            }
-          ) %>
         </div>
       </div>
 
