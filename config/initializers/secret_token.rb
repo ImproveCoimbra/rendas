@@ -9,4 +9,10 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Rendas::Application.config.secret_token = 'a71fc4d3fa232e0b92611d8bdbe1dbb20eb3ff7adf6956e05bc99cece37d447164d139a7084c0dc226dd77b45595ce5888e50606da1c5ac9d00c9973c9af3e90'
+
+
+if Rails.env.production? && ENV['SECRET_TOKEN'].blank?
+  raise 'SECRET_TOKEN environment variable must be set!'
+end
+
+Rendas::Application.config.secret_token = ENV['SECRET_TOKEN'] || 'a71fc4d3fa232e0b92611d8bdbe1dbb20eb3ff7adf6956e05bc99cece37d447164d139a7084c0dc226dd77b45595ce5888e50606da1c5ac9d00c9973c9af3e90'
