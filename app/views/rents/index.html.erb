@@ -17,12 +17,13 @@
 <% @rents.each do |rent| %>
   <tr>
     <td><%= "%.2f" % rent.price %></td>
-    <td><%= rent.postal_code %></td>
+    <td><%= link_to rent.postal_code, postal_code_path(rent.postal_code) %></td>
     <td><%= rent.address %></td>
     <td><%= rent.county %></td>
     <td><%= rent.lat %></td>
     <td><%= rent.lng %></td>
     <td><%= rent.typology %></td>
+    <td><%= link_to 'Result', result_path(rent) %></td>
     <td><%= link_to 'Show', rent %></td>
     <td><%= link_to 'Edit', edit_rent_path(rent) %></td>
     <td><%= link_to 'Destroy', rent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
