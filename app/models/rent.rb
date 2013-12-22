@@ -38,6 +38,10 @@ class Rent
     (self[:price].to_f / 100).round(2) if self[:price]
   end
 
+  def self.typology_count(typology)
+    where(:typology => typology).count
+  end
+
   def self.median(typology)
     get_all_medians[typology]
   end

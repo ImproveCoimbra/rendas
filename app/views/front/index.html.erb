@@ -122,12 +122,12 @@
     window.app = {};
 
     app.TYPOLOGIES = {
-      QUARTO: "Quarto",
-      T0: "T0",
-      T1: "T1",
-      T2: "T2",
-      T3: "T3",
-      T4P: "T4+",
+      QUARTO: "Quarto (<%=Rent.typology_count('Quarto')%>)",
+      T0: "T0 (<%=Rent.typology_count('T0')%>)",
+      T1: "T1 (<%=Rent.typology_count('T1')%>)",
+      T2: "T2 (<%=Rent.typology_count('T2')%>)",
+      T3: "T3 (<%=Rent.typology_count('T3')%>)",
+      T4P: "T4+ (<%=Rent.typology_count('T4+')%>)",
     };
 
     app.rentsByTipology = {};
