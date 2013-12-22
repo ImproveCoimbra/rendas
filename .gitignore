@@ -17,5 +17,4 @@
 
 # Custom
 /config/mongoid.yml
-Gemfile.lock
 /db/rendas_dev
