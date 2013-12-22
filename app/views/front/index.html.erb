@@ -14,23 +14,25 @@
 
         <div class="grid-two-thirds">
           <div class="field">
-            <label for="rent[price]">Valor</label>
+            <label for="rent[price]">Pago</label>
             <input type="text" class="input-inline" placeholder="350" name="rent[price]" value="<%= "%.2f" % @rent.price if @rent.price and @rent.price > 0 %>" maxlength="6" size="6" /> €
           </div>
+
+          <div class="field">
+            <label for="rent[typology]">por um</label>
+            <select name="rent[typology]" class="input-inline">
+              <% for typology in Rent::TYPOLOGIES %>
+                <option <% if @rent.typology == typology %>selected="selected"<% end %>><%= typology %></option>
+              <% end %>
+            </select>
+          </div>
+
           <div class="field">
             <label for="rent[postal_code]">C.Postal</label>
             <input type="text" class="input-inline" name="rent[postal_code][0]" placeholder="3000" value="<%= @rent.postal_code_array[0] %>" maxlength="4" size="4" />
             -
             <input type="text" class="input-inline" name="rent[postal_code][1]" placeholder="123" value="<%= @rent.postal_code_array[1] %>" maxlength="3" size="3" />
             <small><a href="http://www.codigo-postal.pt" target="_blank">Não sabes o teu código postal?</a></small>
-          </div>
-          <div class="field">
-            <label for="rent[typology]">Tipologia</label>
-            <select name="rent[typology]" class="input-inline">
-              <% for typology in Rent::TYPOLOGIES %>
-                <option <% if @rent.typology == typology %>selected="selected"<% end %>><%= typology %></option>
-              <% end %>
-            </select>
           </div>
         </div>
 
