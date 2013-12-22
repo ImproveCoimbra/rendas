@@ -23,4 +23,9 @@ $(function() {
     $("html").addClass("ie");
   }
 
+  // Add Legend to MAP
+  Gmaps.map.callback = function () {
+    Gmaps.map.serviceObject.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(document.getElementById("map-legend"));
+  };
+
 });

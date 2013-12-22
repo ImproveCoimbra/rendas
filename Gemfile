@@ -20,6 +20,6 @@ group :development do
   gem 'rb-readline', '~> 0.4.2'
 end
 
-gem 'geocoder'
-gem 'gmaps4rails', '1.5.6'
-
+gem 'geocoder' # Get google maps geo locations
+gem 'gmaps4rails', '1.5.6' # Render google maps maps
+gem 'request_store' # Per request variables

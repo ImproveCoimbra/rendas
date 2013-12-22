@@ -12,9 +12,9 @@
           <strong>igual</strong> ao
         <% else %>
           <strong>
-            <% if @rent.price < @median - 50 %>
+            <% if @rent.price < @median*0.9 %>
               abaixo
-            <% elsif @rent.price > @median + 50 %>
+            <% elsif @rent.price > @median*1.1 %>
               acima
             <% else %>
               perto

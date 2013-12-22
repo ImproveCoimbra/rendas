@@ -21,23 +21,45 @@ class Rent
 
   default_scope includes(:postal_code)
 
-  delegate :lat, :lng, :latitude, :longitude, :address, :county, :code, :to => :postal_code
+  delegate :lat, :lng, :address, :county, :code, :to => :postal_code
 
   # Gmaps4Rails
   acts_as_gmappable :process_geocoding => false
+
+  def latitude
+    lat + (rand - 0.5)/10000
+  end
+
+  def longitude
+    lng + (rand - 0.5)/10000
+  end
 
   def price
     (self[:price].to_f / 100).round(2) if self[:price]
   end
 
   def self.median(typology)
-    prices = where(:typology => typology).map(&:price)
+    get_all_medians[typology]
+  end
 
-    return nil if prices.empty?
-
-    sorted = prices.sort
-    len = sorted.length
-    ((sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0).round(2)
+  def self.get_all_medians
+    unless RequestStore.store[:rent_medians]
+      medians = {}
+      TYPOLOGIES.each do |t|
+        medians[t] = begin
+          prices = where(:typology => t).map(&:price)
+          unless prices.empty?
+            sorted = prices.sort
+            len = sorted.length
+            ((sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0).round(2)
+          else
+            nil
+          end
+        end
+      end
+      RequestStore.store[:rent_medians] = medians
+    end
+    RequestStore.store[:rent_medians]
   end
 
   def price=(new_price)
@@ -55,6 +77,23 @@ class Rent
 
   def gmaps4rails_infowindow
     "%i&euro; (%s)<br/>%s<br/>%s" % [price, typology, address, code]
+  end
+
+  def gmaps4rails_marker_picture
+    result = {
+      :width => 12,
+      :height => 12
+    }
+    median = Rent.median(typology)
+    if median*1.1 < price
+      image_name = 'dot-red.png'
+    elsif median*0.9 > price
+      image_name = 'dot-green.png'
+    else
+      image_name = 'dot-yellow.png'
+    end
+    result[:picture] = ActionController::Base.new.view_context.asset_path(image_name)
+    result
   end
 
 end
