@@ -1,4 +1,4 @@
-test:
+development:
   sessions:
     default:
       database: rendas_dev
