@@ -17,3 +17,4 @@
 
 # Custom
 /config/mongoid.yml
+Gemfile.lock
