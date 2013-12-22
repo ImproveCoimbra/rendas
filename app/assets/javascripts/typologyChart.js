@@ -9,7 +9,7 @@
   }
 
   /*Constants*/
-  var DEFAULT_COLOR = "#666";
+  var DEFAULT_COLOR = "#555";
   var TYPOLOGY_LABELS = {};
   TYPOLOGY_LABELS[app.TYPOLOGIES.QUARTO] = "Quarto";
   TYPOLOGY_LABELS[app.TYPOLOGIES.T0] = "T0";

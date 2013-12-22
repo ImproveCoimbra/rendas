@@ -33,7 +33,7 @@
       <div class="row">
         <div class="grid-third">
           <h4>Renda</h4>
-          <p><%= @rent.price %>€ (<%= @rent.typology %>)</p>
+          <p><%= "%.2f" % @rent.price %>€ (<%= @rent.typology %>)</p>
           <h4>Morada</h4>
           <p><%= @rent.address %></p>
           <p><a href="mailto:info@improvecoimbra.org?subject=Rendas: Erro na localização&body=A localização do meu código postal está longe da correcta: http://rendas.improvecoimbra.org/result/<%= @rent.id %>" class="btn">Encontrei um erro</a></p>

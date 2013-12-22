@@ -6,7 +6,7 @@
 
 // GLOBAL
 
-$text-color: #444;
+$text-color: #555;
 $background-color: #FFF;
 $alt-background-color: #F2F2F2;
 $field-padding: 10px;
@@ -32,13 +32,15 @@ body {
   max-width: 70em;
 }
 
-h1, h2, h3 {
-  font-family: 'Signika Negative', sans-serif;
-  font-weight: bold;
+h1 {
+  font-family: 'Oleo Script', cursive;
+  &, a, a:hover {
+    font-weight: normal;
+  }
 }
 
-h1 {
-  font-size: 2em;
+h2, h3 {
+  font-weight: bold;
 }
 
 a, a:hover {
@@ -78,30 +80,16 @@ input {
   }
 }
 
-.arrow-down {
-  position: absolute;
-  bottom: -40px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 60px dotted rgba(255, 0, 0, 0);
-  border-right: 60px dotted rgba(255, 0, 0, 0);
-  border-top: 40px solid #FFF;
-  z-index: 1;
-}
-.ie .arrow-down {
-  display: none;
-}
-
 // LAYOUT
 
 #header {
   background-image: url('<%= asset_path 'header_background.jpg' %>');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position-y: center;
 
   h1 {
-    font-size: 3em;
+    font-size: 3.625em;
     padding: 0;
     margin: 0;
     a:hover {
@@ -111,17 +99,19 @@ input {
 
   #header-title {
     padding: 2.5em 0;
-    background: rgba(255,255,255,0.8);
-    @include box-shadow;
+    background: rgba(255,255,255,0.62);
+    position: relative;
     .container {
       margin-top: 0;
-      position: relative;
+      .triangle {
+        position: absolute;
+        bottom: -60px;
+        img {
+          width: 50%;
+          height: 50%;
+        }
+      }
     }
-  }
-
-  .arrow-down {
-    bottom: -57px;
-    border-top-color: rgba(255,255,255,0.8);
   }
 }
 
@@ -153,9 +143,10 @@ input {
     @include box-shadow;
     label {
       display: inline-block;
-      width: 66px;
+      width: 75px;
       padding: 0 $field-padding;
       margin: 0;
+      font-weight: bold;
       text-align: center;
       background-color: $alt-background-color;
       -webkit-border-top-left-radius: $border-radius;
@@ -219,16 +210,11 @@ input {
   }
 
   .btn-large {
-    background-color: yellowgreen;
-    border-color: yellowgreen;
     margin-top: 0;
     width: 180px;
     line-height: 1em;
     @include border-radius;
     @include box-shadow;
-    &:hover {
-      opacity: 0.95;
-    }
   }
 }
 
@@ -237,11 +223,13 @@ input {
 }
 
 .section {
-  padding-top: 2em;
-  padding-bottom: 0.5em;
+  padding-top: 1.5em;
+  padding-bottom: 1em;
   h2 {
-    font-size: 2em;
-    margin-bottom: 0;
+    font-size: 1.5em;
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
   }
   p {
     margin-bottom: 0.5em;

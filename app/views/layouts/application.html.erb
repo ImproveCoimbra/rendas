@@ -5,8 +5,13 @@
   <meta name="description" content="Compara quando pagas de renda em Coimbra e ajuda-nos a mapear os preços dos quartos e casas de Coimbra.">
   <meta name="keywords" content="coimbra,rendas,preço,casas,improve coimbra" />
   <meta name="robots" content="index,follow" />
+  <meta property="og:image" content="http://rendas.improvecoimbra.org/share_image.jpg"/>
+  <link rel="shortcut icon" type="image/png" href="favicon.png" />
+  <meta property="og:image:type" content="image/jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <link href='http://fonts.googleapis.com/css?family=Signika+Negative:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -27,9 +32,11 @@
             <h1>
               <a href="/">Quanto pagas de renda em Coimbra?</a>
             </h1>
+            <% if params[:controller] == 'front' && params[:action] == 'index' %>
+              <div class="triangle"><img src="<%= asset_path('triangulo.png') %>" /></div>
+            <% end %>
           </div>
         </div>
-        <!--<div class="arrow-down"></div>-->
       </div>
     </div>
     <div class="container">
