@@ -52,7 +52,7 @@ class Rent
       medians = {}
       TYPOLOGIES.each do |t|
         medians[t] = begin
-          prices = where(:typology => t).map(&:price)
+          prices = unscoped.where(:typology => t).map(&:price)
           unless prices.empty?
             sorted = prices.sort
             len = sorted.length
