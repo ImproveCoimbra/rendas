@@ -52,16 +52,13 @@
     <div class="row">
       <div class="grid-6">
         <h2>As rendas de Coimbra</h2>
-        <p>Vê no mapa as <%= @rents.size %> rendas de Coimbra que já foram submetidas.</p>
+        <p>Vê no mapa as <%= @num_rents %> rendas de Coimbra que já foram submetidas.</p>
       </div>
     </div>
   </div>
 </div>
 
 <%= gmaps(
-    :markers => {
-      :data => @rents.to_gmaps4rails,
-    },
     :map_options => {
       :container_class => 'home-map',
       :language => 'pt', :hl => 'pt', :region => 'pt',

@@ -19,6 +19,10 @@
 
 $(function() {
 
+  if ($('.home-map').size() > 0) {
+    $.getScript('/load');
+  }
+
   // Add Legend to MAP
   if (typeof Gmaps !== 'undefined') {
     Gmaps.map.callback = function () {

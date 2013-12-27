@@ -3,8 +3,12 @@
 class FrontController < ApplicationController
 
   def index
-    @rents = Rent.all
+    @num_rents = Rent.count
     @rent = Rent.new
+  end
+
+  def load
+    @rents = Rent.all
   end
 
   def submit

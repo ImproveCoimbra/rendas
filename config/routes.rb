@@ -14,4 +14,5 @@ Rendas::Application.routes.draw do
   get  '/result/:id' => 'front#result', :as => :result
   get  '/stats' => 'front#stats', :as => :stats
   get  '/sobre' => 'front#about', :as => :about
+  get  '/load'  => 'front#load',  :as => :load
 end
