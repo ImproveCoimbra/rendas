@@ -1,46 +1,62 @@
-<% content_for :title do %>Estatísticas<% end %>
+<% content_for :title do %>Zonas de Coimbra<% end %>
 
-<div id="page" class="container">
+<div id="page" class="container space-bottom">
   <div class="row">
-    <div class="grid-4 offset-1">
+    <div class="grid-6">
 
-      <h2>Estatísticas</h2>
+      <h2 class="h1">Zonas de Coimbra</h2>
 
-      <p>Já foram submetidas <strong><%= Rent.count %></strong> rendas em Coimbra pelos visitantes deste website.</p>
+      <p class="space-bottom-small">
+        Será que existem realmente zonas de Coimbra mais baratas ou mais caras? Vê abaixo os resultados que descobrimos
+      </p>
 
-      <p>Estes são os valores médios (medianas) por tipologia, até agora:</p>
+      <p>
+        <span class="text-small text-muted">Diferenças médias do valor da renda em relação à mediana da cidade, agrupadas por zonas, e ordenadas pelo número de rendas submetidas.</span>
+      </p>
 
-      <div id="typologyChart">
-        <svg class="typologyChart"></svg>
+      <div class="row">
+        <% @hoods.each_with_index do |hood, index|  %>
+          <div class="grid-2 space-bottom-small">
+            <h3 class="h2 space-bottom-small"><%= hood.name %></h3>
+
+            <p class="space-bottom-small">
+              <strong><span class="text-tall <%= diff_color(hood[:rents_diff]) %>"><%= '%0.2f' % hood[:rents_diff] %>%</span></strong>
+              (<%= hood[:num_rents] %> rendas)
+            </p>
+
+            <%= gmaps(
+                :markers => {
+                  :data => hood[:rents].to_gmaps4rails,
+                },
+                :map_options => {
+                  :id => 'map_' + index.to_s,
+                  :container_class => 'rent-map',
+                  :language => 'pt', :hl => 'pt', :region => 'pt',
+                  :center_latitude => 40.20119879996395,
+                  :center_longitude => -8.426894545555115,
+                  :zoom => 13,
+                  :raw => "{scrollwheel: false}"
+                },
+                :last_map => index == @hoods.size-1,
+                :scripts => (index > 0 ? :none : :api)
+            ) %>
+
+          </div>
+        <% end %>
       </div>
 
     </div>
   </div>
 </div>
 
-<script>
-  (function () {
-    "use strict";
-
-    window.app = {};
-
-    app.TYPOLOGIES = {
-      QUARTO: "Quarto",
-      T0: "T0",
-      T1: "T1",
-      T2: "T2",
-      T3: "T3",
-      T4P: "T4+",
-    };
-
-    app.rentsByTipology = {};
-    app.rentsByTipology[app.TYPOLOGIES.QUARTO] = <%= Rent.median("Quarto") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T0] = <%= Rent.median("T0") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T1] = <%= Rent.median("T1") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T2] = <%= Rent.median("T2") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T3] = <%= Rent.median("T3") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T4P] = <%= Rent.median("T4+") || "null" %>;
-
-    app.PAGE = "STATS";
-  }());
-</script>
+<div class="text-center space-top">
+  <div class="container">
+    <div class="row">
+      <div class="grid-4 offset-1">
+        <h2>Partilha o "Quanto pagas de rendas em Coimbra?"</h2>
+        <p>Ajuda-nos a melhorar os resultados.<br/>Partilha este site com os teus amigos que moram em Coimbra.</p>
+        <%= render 'share' %>
+      </div>
+    </div>
+  </div>
+</div>

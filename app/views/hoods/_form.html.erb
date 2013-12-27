@@ -1,0 +1,33 @@
+<%= form_for(@hood) do |f| %>
+  <% if @hood.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hood.errors.count, "error") %> prohibited this hood from being saved:</h2>
+
+      <ul>
+      <% @hood.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :lat %><br />
+    <%= f.text_field :lat %>
+  </div>
+  <div class="field">
+    <%= f.label :lng %><br />
+    <%= f.text_field :lng %>
+  </div>
+  <div class="field">
+    <%= f.label :radius %><br />
+    <%= f.text_field :radius %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

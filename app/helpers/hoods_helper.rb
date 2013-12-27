@@ -1,0 +1,2 @@
+module HoodsHelper
+end

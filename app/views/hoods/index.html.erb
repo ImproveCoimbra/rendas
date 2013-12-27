@@ -1,0 +1,29 @@
+<h1>Listing hoods</h1>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Lat</th>
+    <th>Lng</th>
+    <th>Radius</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hoods.each do |hood| %>
+  <tr>
+    <td><%= hood.name %></td>
+    <td><%= hood.lat %></td>
+    <td><%= hood.lng %></td>
+    <td><%= hood.radius %></td>
+    <td><%= link_to 'Show', hood %></td>
+    <td><%= link_to 'Edit', edit_hood_path(hood) %></td>
+    <td><%= link_to 'Destroy', hood, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hood', new_hood_path %>

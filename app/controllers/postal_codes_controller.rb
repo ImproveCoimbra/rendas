@@ -1,5 +1,5 @@
 class PostalCodesController < ApplicationController
-  http_basic_authenticate_with name: CONFIG['admin_username'], password: CONFIG['admin_password']
+  before_filter :authenticate
 
   # GET /postal_codes
   # GET /postal_codes.json

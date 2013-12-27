@@ -1,4 +1,7 @@
 Rendas::Application.routes.draw do
+  resources :hoods
+
+
   resources :postal_codes do
     post :find_geo, :on => :member
   end

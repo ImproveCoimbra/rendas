@@ -1,5 +1,5 @@
 class RentsController < ApplicationController
-  http_basic_authenticate_with :name => CONFIG['admin_username'], :password => CONFIG['admin_password'], :except => :export
+  before_filter :authenticate
 
   # GET /rents
   # GET /rents.json

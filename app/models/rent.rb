@@ -18,6 +18,7 @@ class Rent
   belongs_to :postal_code
 
   index({ :typology => 1 }, { :background => true })
+  index({ :postal_code_id => 1 }, { :background => true })
 
   default_scope includes(:postal_code)
 
