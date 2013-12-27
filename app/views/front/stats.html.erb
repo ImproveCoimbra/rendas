@@ -16,7 +16,7 @@
 
       <div class="row">
         <% @hoods.each_with_index do |hood, index|  %>
-          <div class="grid-2 space-bottom-small">
+          <div class="grid-2 space-bottom-small hood" data-hood-lat="<%= hood.lat %>" data-hood-lng="<%= hood.lng %>" data-hood-radius="<%= hood.radius %>">
             <h3 class="h2 space-bottom-small"><%= hood.name %></h3>
 
             <p class="space-bottom-small">

@@ -28,11 +28,11 @@ class Rent
   acts_as_gmappable :process_geocoding => false
 
   def latitude
-    lat + (rand-0.5)/5000 # Nudge to avoid map pin overlaps
+    lat + (rand-0.5)/7500 # Nudge to avoid map pin overlaps
   end
 
   def longitude
-    lng + (rand-0.5)/5000 # Nudge to avoid map pin overlaps
+    lng + (rand-0.5)/7500 # Nudge to avoid map pin overlaps
   end
 
   def price

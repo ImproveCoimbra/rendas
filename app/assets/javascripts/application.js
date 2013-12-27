@@ -24,12 +24,32 @@ $(function() {
   }
 
   // Add Legend to MAP
-  if (typeof Gmaps !== 'undefined') {
+  if (typeof Gmaps !== 'undefined' && typeof Gmaps.map !== 'undefined') {
     Gmaps.map.callback = function () {
       if (document.getElementById("map-legend") != null) {
         Gmaps.map.serviceObject.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(document.getElementById("map-legend"));
       }
     };
+  }
+
+  if ($('.hood').size() > 0) {
+    $('.hood').each(function () {
+      var hood = $(this);
+      var map = Gmaps[$('.gmaps4rails_map', hood).attr('id')];
+      map.callback = function () {
+        var populationOptions = {
+          strokeWeight: 0,
+          fillColor: '#FF0000',
+          fillOpacity: 0.1,
+          map: this.map,
+          center: new google.maps.LatLng(hood.data('hood-lat'), hood.data('hood-lng')),
+          radius: hood.data('hood-radius')*100000
+        };
+        // Add the circle for this city to the map.
+        cityCircle = new google.maps.Circle(populationOptions);
+        //$(this).addOverlay(cityCircle);
+      }
+    });
   }
 
 });
