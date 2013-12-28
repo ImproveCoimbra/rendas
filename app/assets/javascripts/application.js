@@ -19,13 +19,16 @@
 
 $(function() {
 
-  if ($('.home-map').size() > 0) {
-    $.getScript('/load');
-  }
-
-  // Add Legend to MAP
+  // Map loaded callback
   if (typeof Gmaps !== 'undefined' && typeof Gmaps.map !== 'undefined') {
     Gmaps.map.callback = function () {
+
+      // Load content on homepage map
+      if ($('.home-map').size() > 0) {
+        $.getScript('/load');
+      }
+
+      // Add Legend to MAP
       if (document.getElementById("map-legend") != null) {
         Gmaps.map.serviceObject.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(document.getElementById("map-legend"));
       }
