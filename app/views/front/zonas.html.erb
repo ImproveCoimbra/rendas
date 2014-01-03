@@ -1,0 +1,78 @@
+<% content_for :title do %>Zonas de Coimbra<% end %>
+
+<div id="page" class="container space-bottom">
+  <div class="row">
+    <div class="grid-4 offset-1">
+
+      <h2 class="h1">Zonas de Coimbra</h2>
+
+      <p class="space-bottom-small">
+        Será que existem realmente zonas de Coimbra mais baratas ou mais caras?
+      </p>
+
+      <p class="space-bottom-small">
+        Vê abaixo os resultados que descobrimos.
+      </p>
+
+      <table class="table table-condensed hoods">
+        <thead>
+          <tr>
+            <th>Zona</th>
+            <th title="Diferença em relação ao valor médio da cidade">Preço</th>
+            <th title="Número de rendas submetidas até agora nesta zona" class="text-right">Rendas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @hoods.each do |hood|  %>
+            <tr class="hood"
+                data-hood-name="<%= hood.name %>"
+                data-hood-lat="<%= hood.lat %>"
+                data-hood-lng="<%= hood.lng %>"
+                data-hood-radius="<%= hood.radius %>"
+                data-hood-diff="<%= hood[:rents_diff].round %>"
+                data-hood-rents="<%= hood[:num_rents] %>">
+              <td><span class="text-tall"><%= hood.name %></span></td>
+              <td>
+                <span class="text-tall <%= diff_color(hood[:rents_diff]) %>">
+                  <span class="rent-diff-arrow"><% if hood[:rents_diff].round > 0 %>▴<% elsif hood[:rents_diff].round < 0 %>▾<% else %>-&nbsp;<% end %></span>
+                  <%= hood[:rents_diff].round.abs %>%
+                </span>
+              </td>
+              <td class="text-right">
+                <%= hood[:num_rents] %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= gmaps(
+                :map_options => {
+                  :container_class => 'hoods-map',
+                  :language => 'pt', :hl => 'pt', :region => 'pt',
+                  :center_latitude => 40.20119879996395,
+                  :center_longitude => -8.426894545555115,
+                  :zoom => 13,
+                  :raw => "{scrollwheel: false}"
+                }
+            ) %>
+
+      <p>
+        <span class="text-small text-muted">As variações no preço são calculadas através da mediana das diferenças do valor de cada renda, de uma determinada zona, em relação à mediana da cidade.</span>
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<div class="text-center space-top">
+  <div class="container">
+    <div class="row">
+      <div class="grid-4 offset-1">
+        <h2>Partilha o "Quanto pagas de rendas em Coimbra?"</h2>
+        <p>Ajuda-nos a melhorar os resultados.<br/>Partilha este site com os teus amigos que moram em Coimbra.</p>
+        <%= render 'share' %>
+      </div>
+    </div>
+  </div>
+</div>

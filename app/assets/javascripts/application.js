@@ -37,9 +37,45 @@ $(function() {
       if (document.getElementById("map-legend") != null) {
         Gmaps.map.serviceObject.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(document.getElementById("map-legend"));
       }
+
+      // Hoods
+
+      if ($('.hood').size() > 0) {
+        $('.hood').each(function () {
+          var hood = $(this);
+          var hoodDiff = parseFloat(hood.data('hood-diff'));
+          var hoodColor = '#EED500'; // Yellow
+          if (hoodDiff > 0) {
+            hoodColor = '#EE1100'; // Red
+          } else if (hoodDiff < 0) {
+            hoodColor = '#00EE1C'; // Green
+          }
+          var circleOptions = {
+            strokeWeight: 0,
+            fillColor: hoodColor,
+            fillOpacity: 0.3,
+            map: Gmaps.map.map,
+            center: new google.maps.LatLng(hood.data('hood-lat'), hood.data('hood-lng')),
+            radius: hood.data('hood-radius')*100000,
+            clickable: true,
+          };
+          // Add the circle for this city to the map.
+          var hoodCircle = new google.maps.Circle(circleOptions);
+
+          google.maps.event.addListener(hoodCircle, 'click', function() {
+            var infoWindow = new google.maps.InfoWindow({
+              content: '<h2 style="margin: 0; padding: 0;">'+hood.data('hood-name')+'</h2>'
+            });
+            infoWindow.setPosition(hoodCircle.getCenter());
+            infoWindow.open(Gmaps.map.map);
+          });
+        });
+      }
+
     };
   }
 
+/*
   if ($('.hood').size() > 0) {
     $('.hood').each(function () {
       var hood = $(this);
@@ -59,5 +95,6 @@ $(function() {
       }
     });
   }
+*/
 
 });

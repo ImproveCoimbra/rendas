@@ -12,6 +12,12 @@ class HoodsController < ApplicationController
     end
   end
 
+  def maps
+    @hoods = Hood.all.to_a
+    @hoods.each(&:calculate_rents_difference)
+    @hoods.sort! { |a,b| b[:rents_diff] <=> a[:rents_diff] }
+  end
+
   # GET /hoods/1
   # GET /hoods/1.json
   def show

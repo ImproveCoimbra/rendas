@@ -282,10 +282,27 @@ input {
 
 // STATS PAGE
 
-.rent-map .gmaps4rails_map {
-  height: 15em;
+.table {
+  td, th {
+    vertical-align: middle;
+    &.text-right {
+      text-align: right;
+    }
+  }
 }
 
+table.hoods {
+  margin: 2em 0;
+}
+
+.hoods-map .gmaps4rails_map {
+  height: 25em;
+  margin: 2em 0;
+}
+
+.rent-diff-high, .rent-diff-medium, .rent-diff-low {
+  font-weight: bold;
+}
 .rent-diff-high {
   color: #EE1100;
 }
@@ -294,4 +311,11 @@ input {
 }
 .rent-diff-low {
   color: #00EE1C;
+}
+
+.rent-diff-arrow {
+  font-size: 43px;
+  line-height: 0;
+  vertical-align: sub;
+  margin-right: -5px;
 }

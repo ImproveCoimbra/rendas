@@ -1,26 +1,23 @@
-<% content_for :title do %>Zonas de Coimbra<% end %>
-
-<div id="page" class="container space-bottom">
+<div id="page" class="container">
   <div class="row">
     <div class="grid-6">
-
-      <h2 class="h1">Zonas de Coimbra</h2>
-
-      <p class="space-bottom-small">
-        Será que existem realmente zonas de Coimbra mais baratas ou mais caras? Vê abaixo os resultados que descobrimos
-      </p>
-
-      <p>
-        <span class="text-small text-muted">Diferenças médias do valor da renda em relação à mediana da cidade, agrupadas por zonas, e ordenadas pelo número de rendas submetidas.</span>
-      </p>
-
+      <h1>Mapping hoods</h1>
       <div class="row">
         <% @hoods.each_with_index do |hood, index|  %>
           <div class="grid-2 space-bottom-small hood" data-hood-lat="<%= hood.lat %>" data-hood-lng="<%= hood.lng %>" data-hood-radius="<%= hood.radius %>">
             <h3 class="h2 space-bottom-small"><%= hood.name %></h3>
 
             <p class="space-bottom-small">
-              <strong><span class="text-tall <%= diff_color(hood[:rents_diff]) %>"><%= '%0.2f' % hood[:rents_diff] %>%</span></strong>
+              <strong>
+                <span class="text-tall <%= diff_color(hood[:rents_diff]) %>">
+                  <% if hood[:rents_diff].round > 0 %>
+                    <span class="rent-diff-arrow">▴</span>
+                  <% elsif hood[:rents_diff].round < 0 %>
+                    <span class="rent-diff-arrow">▾</span>
+                  <% end %>
+                  <%= hood[:rents_diff].round.abs %>%
+                </span>
+              </strong>
               (<%= hood[:num_rents] %> rendas)
             </p>
 
@@ -43,19 +40,7 @@
 
           </div>
         <% end %>
-      </div>
 
-    </div>
-  </div>
-</div>
-
-<div class="text-center space-top">
-  <div class="container">
-    <div class="row">
-      <div class="grid-4 offset-1">
-        <h2>Partilha o "Quanto pagas de rendas em Coimbra?"</h2>
-        <p>Ajuda-nos a melhorar os resultados.<br/>Partilha este site com os teus amigos que moram em Coimbra.</p>
-        <%= render 'share' %>
       </div>
     </div>
   </div>
