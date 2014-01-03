@@ -1,1 +1,5 @@
-Gmaps.map.replaceMarkers(<%=raw @rents.to_gmaps4rails %>);
+if (typeof Gmaps !== 'undefined' && typeof Gmaps.map !== 'undefined') {
+  Gmaps.map.replaceMarkers(<%=raw @rents.to_gmaps4rails %>);
+} else {
+  markersToBeLoaded = <%=raw @rents.to_gmaps4rails %>;
+}

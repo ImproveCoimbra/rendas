@@ -19,13 +19,18 @@
 
 $(function() {
 
+  // Load content on homepage map
+  if ($('.home-map').size() > 0) {
+    $.getScript('/load');
+  }
+
   // Map loaded callback
   if (typeof Gmaps !== 'undefined' && typeof Gmaps.map !== 'undefined') {
     Gmaps.map.callback = function () {
 
-      // Load content on homepage map
-      if ($('.home-map').size() > 0) {
-        $.getScript('/load');
+      // Place markers if there are some waiting
+      if (typeof markersToBeLoaded !== 'undefined') {
+        Gmaps.map.replaceMarkers(markersToBeLoaded);
       }
 
       // Add Legend to MAP
