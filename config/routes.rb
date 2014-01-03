@@ -10,6 +10,7 @@ Rendas::Application.routes.draw do
 
   resources :hoods do
     get :maps, :on => :collection
+    post :calculate_all, :on => :collection
   end
 
   root :to => 'front#index'

@@ -30,17 +30,17 @@
                 data-hood-lat="<%= hood.lat %>"
                 data-hood-lng="<%= hood.lng %>"
                 data-hood-radius="<%= hood.radius %>"
-                data-hood-diff="<%= hood[:rents_diff].round %>"
-                data-hood-rents="<%= hood[:num_rents] %>">
+                data-hood-diff="<%= hood.diff.round %>"
+                data-hood-rents="<%= hood.num_rents %>">
               <td><span class="text-tall"><%= hood.name %></span></td>
               <td>
-                <span class="text-tall <%= diff_color(hood[:rents_diff]) %>">
-                  <span class="rent-diff-arrow"><% if hood[:rents_diff].round > 0 %>▴<% elsif hood[:rents_diff].round < 0 %>▾<% else %>-&nbsp;<% end %></span>
-                  <%= hood[:rents_diff].round.abs %>%
+                <span class="text-tall <%= diff_color(hood.diff) %>">
+                  <span class="rent-diff-arrow"><% if hood.diff.round > 0 %>▴<% elsif hood.diff.round < 0 %>▾<% else %>&nbsp;&nbsp;<% end %></span>
+                  <%= hood.diff.round.abs %>%
                 </span>
               </td>
               <td class="text-right">
-                <%= hood[:num_rents] %>
+                <%= hood.num_rents %>
               </td>
             </tr>
           <% end %>

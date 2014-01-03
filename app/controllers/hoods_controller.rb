@@ -13,9 +13,16 @@ class HoodsController < ApplicationController
   end
 
   def maps
-    @hoods = Hood.all.to_a
-    @hoods.each(&:calculate_rents_difference)
-    @hoods.sort! { |a,b| b[:rents_diff] <=> a[:rents_diff] }
+    @hoods = Hood.all.desc(:diff)
+  end
+
+  def calculate_all
+    Hood.all.each do |hood|
+      hood.calculate_rents_difference
+      hood.save
+    end
+    flash[:notice] = 'Re-calculated rents'
+    redirect_to :action => :index
   end
 
   # GET /hoods/1

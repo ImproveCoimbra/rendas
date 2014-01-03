@@ -9,21 +9,17 @@
 
             <p class="space-bottom-small">
               <strong>
-                <span class="text-tall <%= diff_color(hood[:rents_diff]) %>">
-                  <% if hood[:rents_diff].round > 0 %>
-                    <span class="rent-diff-arrow">▴</span>
-                  <% elsif hood[:rents_diff].round < 0 %>
-                    <span class="rent-diff-arrow">▾</span>
-                  <% end %>
-                  <%= hood[:rents_diff].round.abs %>%
+                <span class="text-tall <%= diff_color(hood.diff) %>">
+                  <span class="rent-diff-arrow"><% if hood.diff.round > 0 %>▴<% elsif hood.diff.round < 0 %>▾<% end %></span>
+                  <%= hood.diff.round.abs %>%
                 </span>
               </strong>
-              (<%= hood[:num_rents] %> rendas)
+              (<%= hood.num_rents %> rendas)
             </p>
 
             <%= gmaps(
                 :markers => {
-                  :data => hood[:rents].to_gmaps4rails,
+                  :data => hood.rents.includes(:postal_code).to_gmaps4rails,
                 },
                 :map_options => {
                   :id => 'map_' + index.to_s,

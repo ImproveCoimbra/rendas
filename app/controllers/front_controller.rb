@@ -29,9 +29,7 @@ class FrontController < ApplicationController
   end
 
   def zonas
-    @hoods = Hood.all.to_a
-    @hoods.each(&:calculate_rents_difference)
-    @hoods.sort! { |a,b| b[:rents_diff] <=> a[:rents_diff] }
+    @hoods = Hood.all.desc(:diff)
   end
 
   def about; end

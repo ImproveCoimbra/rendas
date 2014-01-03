@@ -6,6 +6,8 @@
     <th>Lat</th>
     <th>Lng</th>
     <th>Radius</th>
+    <th>Diff</th>
+    <th>Num Rents</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +19,8 @@
     <td><%= hood.lat %></td>
     <td><%= hood.lng %></td>
     <td><%= hood.radius %></td>
+    <td><%= hood.diff %></td>
+    <td><%= hood.num_rents %></td>
     <td><%= link_to 'Show', hood %></td>
     <td><%= link_to 'Edit', edit_hood_path(hood) %></td>
     <td><%= link_to 'Destroy', hood, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +30,6 @@
 
 <br />
 
-<%= link_to 'New Hood', new_hood_path %>
+<%= link_to 'New Hood', new_hood_path, :class => 'btn' %>
+
+<%= link_to 'Re-calculate rents', calculate_all_hoods_path, :method => :post, :class => 'btn' %>
