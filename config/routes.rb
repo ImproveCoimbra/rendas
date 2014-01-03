@@ -1,7 +1,5 @@
 Rendas::Application.routes.draw do
 
-
-
   resources :postal_codes do
     post :find_geo, :on => :member
   end
@@ -14,7 +12,6 @@ Rendas::Application.routes.draw do
     get :maps, :on => :collection
   end
 
-
   root :to => 'front#index'
 
   post '/submit' => 'front#submit'
@@ -22,4 +19,5 @@ Rendas::Application.routes.draw do
   get  '/zonas' => 'front#zonas', :as => :zonas
   get  '/sobre' => 'front#about', :as => :about
   get  '/load'  => 'front#load',  :as => :load
+
 end

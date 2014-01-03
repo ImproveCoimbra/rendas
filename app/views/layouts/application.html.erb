@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Quanto pagas de renda em Coimbra?<% if content_for?(:title) %> - <%= yield :title %><% end %></title>
-  <meta name="description" content="Compara quanto pagas de renda em Coimbra e ajuda-nos a mapear os preços dos quartos e casas de Coimbra.">
-  <meta name="keywords" content="coimbra,rendas,preço,casas,improve coimbra" />
+  <title><% if content_for?(:title) %><%= yield :title %> - <% end %>Quanto pagas de renda em Coimbra?</title>
+  <meta name="description" content="<% if content_for?(:description) %><%= yield :description %><% else %>Compara quanto pagas de renda em Coimbra e ajuda-nos a mapear os preços dos quartos e casas de Coimbra.<% end %>">
+  <meta name="keywords" content="coimbra,rendas,aluguer,preço,casas,arrendamento,improve coimbra" />
   <meta name="robots" content="index,follow" />
   <meta property="og:image" content="http://rendas.improvecoimbra.org/share_image.jpg"/>
   <link rel="shortcut icon" type="image/png" href="favicon.png" />
