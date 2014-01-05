@@ -48,7 +48,7 @@ $(function() {
           if (hoodDiff > 0) {
             hoodColor = '#EE1100'; // Red
           } else if (hoodDiff < 0) {
-            hoodColor = '#00EE1C'; // Green
+            hoodColor = '#00CC00'; // Green
           }
           var circleOptions = {
             strokeWeight: 0,
