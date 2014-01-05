@@ -9,10 +9,7 @@
 
             <p class="space-bottom-small">
               <strong>
-                <span class="text-tall <%= diff_color(hood.diff) %>">
-                  <span class="rent-diff-arrow"><% if hood.diff.round > 0 %>▴<% elsif hood.diff.round < 0 %>▾<% end %></span>
-                  <%= hood.diff.round.abs %>%
-                </span>
+                <span class="text-tall <%= diff_color(hood.diff) %>"><%= hood.diff.round.abs %>%</span>
               </strong>
               (<%= hood.num_rents %> rendas)
             </p>

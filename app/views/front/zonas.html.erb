@@ -34,10 +34,7 @@
                 data-hood-rents="<%= hood.num_rents %>">
               <td><span class="text-tall"><%= hood.name %></span></td>
               <td>
-                <span class="text-tall <%= diff_color(hood.diff) %>">
-                  <span class="rent-diff-arrow"><% if hood.diff.round > 0 %>▴<% elsif hood.diff.round < 0 %>▾<% else %>&nbsp;&nbsp;<% end %></span>
-                  <%= hood.diff.round.abs %>%
-                </span>
+                <span class="text-tall <%= diff_color(hood.diff) %>"><%= hood.diff.round.abs %>%</span>
               </td>
               <td class="text-right">
                 <%= hood.num_rents %>

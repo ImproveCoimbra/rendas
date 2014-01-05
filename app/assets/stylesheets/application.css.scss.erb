@@ -301,21 +301,18 @@ table.hoods {
 }
 
 .rent-diff-high, .rent-diff-medium, .rent-diff-low {
+  padding-left: 25px;
   font-weight: bold;
+  background: url('<%= asset_path 'arrow-yellow.png' %>') left center no-repeat;
 }
 .rent-diff-high {
   color: #EE1100;
+  background-image: url('<%= asset_path 'arrow-red.png' %>');
 }
 .rent-diff-medium {
   color: #EED500;
 }
 .rent-diff-low {
-  color: #00CC00;
-}
-
-.rent-diff-arrow {
-  font-size: 43px;
-  line-height: 0;
-  vertical-align: sub;
-  margin-right: -5px;
+  color: #009900;
+  background-image: url('<%= asset_path 'arrow-green.png' %>');
 }

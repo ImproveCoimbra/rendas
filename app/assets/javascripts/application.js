@@ -48,10 +48,12 @@ $(function() {
           if (hoodDiff > 0) {
             hoodColor = '#EE1100'; // Red
           } else if (hoodDiff < 0) {
-            hoodColor = '#00CC00'; // Green
+            hoodColor = '#009900'; // Green
           }
           var circleOptions = {
-            strokeWeight: 0,
+            strokeOpacity: 0.5,
+            strokeColor: hoodColor,
+            strokeWeight: 0.5,
             fillColor: hoodColor,
             fillOpacity: 0.3,
             map: Gmaps.map.map,
@@ -64,7 +66,8 @@ $(function() {
 
           google.maps.event.addListener(hoodCircle, 'click', function() {
             var infoWindow = new google.maps.InfoWindow({
-              content: '<h2 style="margin: 0; padding: 0;">'+hood.data('hood-name')+'</h2>'
+              content: '<p class="text-tall" style="margin:0.5em 0 0;padding:0;">'+hood.data('hood-name')+'</p>',
+              maxHeight: 32,
             });
             infoWindow.setPosition(hoodCircle.getCenter());
             infoWindow.open(Gmaps.map.map);
