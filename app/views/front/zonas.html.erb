@@ -20,7 +20,7 @@
           <tr>
             <th>Zona</th>
             <th title="Diferença em relação ao valor médio da cidade">Preço</th>
-            <th title="Número de rendas submetidas até agora nesta zona" class="text-right">Rendas</th>
+            <th title="Número de rendas submetidas até agora nesta zona" class="text-right">Nº rendas</th>
           </tr>
         </thead>
         <tbody>
@@ -58,6 +58,9 @@
       <p>
         <span class="text-small text-muted">As variações no preço são calculadas através da mediana das diferenças do valor de cada renda, de uma determinada zona, em relação à mediana da cidade.</span>
       </p>
+
+      <p>Estes são os valores médios (medianas) por tipologia, até agora:</p>
+      <%= render 'typology_chart' %>
 
     </div>
   </div>

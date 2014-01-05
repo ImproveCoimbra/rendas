@@ -1,0 +1,30 @@
+<div id="typologyChart" class="space-top">
+  <svg class="typologyChart"></svg>
+</div>
+
+<script>
+  (function () {
+    "use strict";
+
+    window.app = {};
+
+    app.TYPOLOGIES = {
+      QUARTO: "Quarto (<%=Rent.typology_count('Quarto')%>)",
+      T0: "T0 (<%=Rent.typology_count('T0')%>)",
+      T1: "T1 (<%=Rent.typology_count('T1')%>)",
+      T2: "T2 (<%=Rent.typology_count('T2')%>)",
+      T3: "T3 (<%=Rent.typology_count('T3')%>)",
+      T4P: "T4+ (<%=Rent.typology_count('T4+')%>)",
+    };
+
+    app.rentsByTipology = {};
+    app.rentsByTipology[app.TYPOLOGIES.QUARTO] = <%= Rent.median("Quarto") || "null" %>;
+    app.rentsByTipology[app.TYPOLOGIES.T0] = <%= Rent.median("T0") || "null" %>;
+    app.rentsByTipology[app.TYPOLOGIES.T1] = <%= Rent.median("T1") || "null" %>;
+    app.rentsByTipology[app.TYPOLOGIES.T2] = <%= Rent.median("T2") || "null" %>;
+    app.rentsByTipology[app.TYPOLOGIES.T3] = <%= Rent.median("T3") || "null" %>;
+    app.rentsByTipology[app.TYPOLOGIES.T4P] = <%= Rent.median("T4+") || "null" %>;
+
+    app.PAGE = "STATS";
+  }());
+</script>

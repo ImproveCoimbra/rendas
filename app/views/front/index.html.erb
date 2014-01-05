@@ -82,6 +82,17 @@
   </div>
 </div>
 
+<div id="section" class="section text-center">
+  <div class="container">
+    <div class="row">
+      <div class="grid-6">
+        <p><%= link_to 'Zonas de Coimbra', zonas_path, :class => 'btn btn-blue btn-xlarge' %></p>
+        <p>Descobre as zonas acima e baixo da média de Coimbra.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="stats-section" class="section text-center">
   <div class="container">
     <div class="row">
@@ -90,9 +101,7 @@
         <p>Estes são os valores médios (medianas) por tipologia, até agora:</p>
         <div class="row">
           <div class="grid-4 offset-1">
-            <div id="typologyChart" class="space-top">
-              <svg class="typologyChart"></svg>
-            </div>
+            <%= render 'typology_chart' %>
           </div>
         </div>
         <p></p>
@@ -115,29 +124,4 @@
 
 <script>
   var show_legend = true;
-
-  (function () {
-    "use strict";
-
-    window.app = {};
-
-    app.TYPOLOGIES = {
-      QUARTO: "Quarto (<%=Rent.typology_count('Quarto')%>)",
-      T0: "T0 (<%=Rent.typology_count('T0')%>)",
-      T1: "T1 (<%=Rent.typology_count('T1')%>)",
-      T2: "T2 (<%=Rent.typology_count('T2')%>)",
-      T3: "T3 (<%=Rent.typology_count('T3')%>)",
-      T4P: "T4+ (<%=Rent.typology_count('T4+')%>)",
-    };
-
-    app.rentsByTipology = {};
-    app.rentsByTipology[app.TYPOLOGIES.QUARTO] = <%= Rent.median("Quarto") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T0] = <%= Rent.median("T0") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T1] = <%= Rent.median("T1") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T2] = <%= Rent.median("T2") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T3] = <%= Rent.median("T3") || "null" %>;
-    app.rentsByTipology[app.TYPOLOGIES.T4P] = <%= Rent.median("T4+") || "null" %>;
-
-    app.PAGE = "STATS";
-  }());
 </script>
