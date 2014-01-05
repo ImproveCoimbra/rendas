@@ -1,9 +1,9 @@
 module FrontHelper
 
   def diff_color(rent_diff)
-    'rent-diff-' + if rent_diff > 1
+    'rent-diff-' + if rent_diff >= 0.5
       'high'
-    elsif rent_diff < -1
+    elsif rent_diff <= -0.5
       'low'
     else
       'medium'

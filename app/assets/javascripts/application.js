@@ -66,8 +66,7 @@ $(function() {
 
           google.maps.event.addListener(hoodCircle, 'click', function() {
             var infoWindow = new google.maps.InfoWindow({
-              content: '<p class="text-tall" style="margin:0.5em 0 0;padding:0;">'+hood.data('hood-name')+'</p>',
-              maxHeight: 32,
+              content: '<p class="text-tall" style="margin:0.5em 0 0;padding:0;">'+hood.data('hood-name')+'</p>'
             });
             infoWindow.setPosition(hoodCircle.getCenter());
             infoWindow.open(Gmaps.map.map);
